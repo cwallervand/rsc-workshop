@@ -73,6 +73,33 @@ export async function marksAsCompleted(formData: FormData /*ids: number[]*/) {
   }
 }
 
+export async function deleteTodos(formData: FormData) {
+  const rawFormData = {
+    selectedTodos: formData.getAll("selectedTodos"),
+  };
+
+  try {
+    const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
+    console.log("selectedTodos", selectedTodos);
+
+    await delay(3000);
+    await db.todo.deleteMany({
+      where: {
+        id: {
+          in: selectedTodos,
+        },
+      },
+    });
+    revalidatePath("/");
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      console.error("Validation failed:", error.errors);
+    } else {
+      console.error("Unexpected error:", error);
+    }
+  }
+}
+
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
