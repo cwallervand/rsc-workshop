@@ -2,8 +2,8 @@
 import { type FC, useOptimistic } from "react";
 import { type Todo } from "@prisma/client";
 
-import { Button } from "~/components/ui/button";
 import { TodoList } from "~/components/todo/todoList";
+import { TodosActions } from "~/components/todo/todosActions";
 
 import { marksAsCompleted, deleteTodos } from "~/server/serverFunctions";
 
@@ -32,14 +32,10 @@ export const TodosForm: FC<{ todos: Todo[] }> = ({ todos }) => {
 
   return (
     <form>
-      <div className="selected-todos-actions mb-4 flex flex-row justify-center gap-2">
-        <Button formAction={marksAsCompletedFormAction}>
-          Mark as completed
-        </Button>
-        <Button variant="destructive" formAction={deleteTodos}>
-          Delete
-        </Button>
-      </div>
+      <TodosActions
+        marksAsCompletedFormAction={marksAsCompletedFormAction}
+        deleteTodosFormAction={deleteTodos}
+      />
       <TodoList todos={optimisticTodos} />
     </form>
   );
