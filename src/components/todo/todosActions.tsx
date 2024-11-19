@@ -15,11 +15,14 @@ type TodosActionsProps = {
 export const TodosActions: FC<TodosActionsProps> = ({
   marksAsCompletedFormAction,
   deleteTodosFormAction,
-}) => (
-  <div className="selected-todos-actions mb-4 flex flex-row justify-center gap-2">
-    <Button formAction={marksAsCompletedFormAction}>Mark as completed</Button>
-    <Button variant="destructive" formAction={deleteTodosFormAction}>
-      Delete
-    </Button>
-  </div>
-);
+}) => {
+  console.log("### TodosActions ###");
+  return (
+    <div className="selected-todos-actions mb-4 flex flex-row justify-center gap-2">
+      <Button formAction={marksAsCompletedFormAction}>Mark as completed</Button>
+      <Button variant="destructive" formAction={deleteTodosFormAction}>
+        Delete
+      </Button>
+    </div>
+  );
+};

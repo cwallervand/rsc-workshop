@@ -39,7 +39,7 @@ export async function addTodo(formData: FormData) {
 }
 
 export async function getTodos(): Promise<Todo[]> {
-  // await delay(1500);
+  await delay(1500);
   const todos: Todo[] = await db.todo.findMany();
 
   return todos;

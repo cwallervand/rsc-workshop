@@ -4,6 +4,7 @@ import { TodosWidget } from "~/components/todo/todosWidget";
 import { TodoListSkeleton } from "~/components/todo/todoListSkeleton";
 
 export default async function HomePage() {
+  console.log("### HomePage ###");
   return (
     <main className="p-4">
       <section>
