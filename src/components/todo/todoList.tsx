@@ -1,8 +1,9 @@
-import { TodoItem } from "~/components/todo/todoItem";
-import { getTodos } from "~/server/serverFunctions";
+import { type FC } from "react";
+import { type Todo } from "@prisma/client";
 
-export const TodoList = async () => {
-  const todos = await getTodos();
+import { TodoItem } from "~/components/todo/todoItem";
+
+export const TodoList: FC<{ todos: Todo[] }> = ({ todos }) => {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
