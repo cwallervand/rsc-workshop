@@ -13,7 +13,9 @@ export const AddTodoForm = ({ className }: AddTodoFormProps) => {
     <form action={addTodo} className={className}>
       <div className="mb-2 flex flex-row gap-2">
         <Input type="text" name="title" placeholder="Todo" />
-        <Button type="submit">Add</Button>
+        <Button type="submit" className="bg-green-700">
+          Add
+        </Button>
       </div>
       <details>
         <summary>Details</summary>
