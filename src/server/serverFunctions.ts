@@ -23,7 +23,7 @@ export async function addTodo(formData: FormData) {
 
   try {
     const validTodo = createTodoSchema.parse(rawFormData);
-    await delay(1500);
+    await delay(1000);
 
     await db.todo.create({
       data: validTodo,
@@ -39,13 +39,13 @@ export async function addTodo(formData: FormData) {
 }
 
 export async function getTodos(): Promise<Todo[]> {
-  await delay(1500);
+  await delay(1000);
   const todos: Todo[] = await db.todo.findMany();
 
   return todos;
 }
 
-export async function marksAsCompleted(formData: FormData /*ids: number[]*/) {
+export async function completeTodos(formData: FormData /*ids: number[]*/) {
   const rawFormData = {
     selectedTodos: formData.getAll("selectedTodos"),
   };
@@ -53,8 +53,8 @@ export async function marksAsCompleted(formData: FormData /*ids: number[]*/) {
   try {
     const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
     console.log("selectedTodos", selectedTodos);
+    await delay(1000);
 
-    await delay(1500);
     await db.todo.updateMany({
       where: {
         id: {
@@ -83,8 +83,7 @@ export async function deleteTodos(formData: FormData) {
   try {
     const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
     console.log("selectedTodos", selectedTodos);
-
-    // await delay(1500);
+    await delay(1000);
     await db.todo.deleteMany({
       where: {
         id: {
