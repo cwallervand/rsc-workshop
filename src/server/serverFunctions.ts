@@ -45,13 +45,25 @@ export async function getTodos(): Promise<Todo[]> {
   return todos;
 }
 
-export async function completeTodo(id: number) {
+export async function setTodoDone(id: number) {
   await db.todo.update({
     where: {
       id,
     },
     data: {
-      completed: true,
+      done: true,
+    },
+  });
+  revalidatePath("/");
+}
+
+export async function setTodoNotDone(id: number) {
+  await db.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      done: false,
     },
   });
   revalidatePath("/");
@@ -66,7 +78,7 @@ export async function deleteTodo(id: number) {
   revalidatePath("/");
 }
 
-export async function completeTodos(formData: FormData /*ids: number[]*/) {
+export async function setTodosDone(formData: FormData /*ids: number[]*/) {
   const rawFormData = {
     selectedTodos: formData.getAll("selectedTodos"),
   };
@@ -83,7 +95,7 @@ export async function completeTodos(formData: FormData /*ids: number[]*/) {
         },
       },
       data: {
-        completed: true,
+        done: true,
       },
     });
     revalidatePath("/");

@@ -13,13 +13,15 @@ import { Trash } from "~/components/icons/trash";
 import { EllipsisHostizontal } from "~/components/icons/ellipsis-horizontal";
 
 type TodoItemMenuProps = {
-  completeTodo: () => Promise<void>;
+  toggleDoneStatus: () => Promise<void>;
   deleteTodo: () => Promise<void>;
+  todoDone: boolean;
 };
 
 export const TodoItemMenu: FC<TodoItemMenuProps> = ({
-  completeTodo,
+  toggleDoneStatus,
   deleteTodo,
+  todoDone,
 }) => {
   console.log("### TodoItemMenu ###");
   return (
@@ -28,9 +30,9 @@ export const TodoItemMenu: FC<TodoItemMenuProps> = ({
         <EllipsisHostizontal className="size-8" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={completeTodo}>
+        <DropdownMenuItem onClick={toggleDoneStatus}>
           <CheckBadge />
-          Mark as completed
+          {todoDone ? "Set at not done" : "Set as done"}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={deleteTodo}>
           <Trash />

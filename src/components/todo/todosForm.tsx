@@ -5,7 +5,7 @@ import { type Todo } from "@prisma/client";
 import { TodoList } from "~/components/todo/todoList";
 import { TodosActions } from "~/components/todo/todosActions";
 
-import { completeTodos, deleteTodos } from "~/server/serverFunctions";
+import { setTodosDone, deleteTodos } from "~/server/serverFunctions";
 
 type TodosFormProps = {
   todos: Todo[];
@@ -39,7 +39,7 @@ export const TodosForm: FC<TodosFormProps> = ({ todos, TodoListComponent }) => {
   return (
     <form>
       <TodosActions
-        completeTodosFormAction={completeTodos}
+        setTodosDoneFormAction={setTodosDone}
         deleteTodosFormAction={deleteTodos}
       />
       {/* <TodoList todos={todos} /> */}

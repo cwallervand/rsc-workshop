@@ -8,18 +8,18 @@ type FormAction =
   | undefined;
 
 type TodosActionsProps = {
-  completeTodosFormAction: FormAction;
+  setTodosDoneFormAction: FormAction;
   deleteTodosFormAction: FormAction;
 };
 
 export const TodosActions: FC<TodosActionsProps> = ({
-  completeTodosFormAction,
+  setTodosDoneFormAction,
   deleteTodosFormAction,
 }) => {
   console.log("### TodosActions ###");
   return (
     <div className="selected-todos-actions mb-4 flex flex-row justify-center gap-2">
-      <Button formAction={completeTodosFormAction}>Set as completed</Button>
+      <Button formAction={setTodosDoneFormAction}>Set as done</Button>
       <Button variant="destructive" formAction={deleteTodosFormAction}>
         Delete
       </Button>

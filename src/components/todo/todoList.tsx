@@ -17,7 +17,7 @@ export const TodoList: FC<TodoListProps> = ({ todos }) => {
             title={todo.title}
             description={todo.description}
             id={todo.id}
-            completed={todo.completed}
+            done={todo.done}
           />
         </li>
       ))}
