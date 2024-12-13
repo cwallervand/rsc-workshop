@@ -45,6 +45,18 @@ export async function getTodos(): Promise<Todo[]> {
   return todos;
 }
 
+export async function completeTodo(id: number) {
+  await db.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      completed: true,
+    },
+  });
+  revalidatePath("/");
+}
+
 export async function completeTodos(formData: FormData /*ids: number[]*/) {
   const rawFormData = {
     selectedTodos: formData.getAll("selectedTodos"),
