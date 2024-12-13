@@ -7,11 +7,27 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
+
 import { CheckBadge } from "~/components/icons/check-badge";
+import { TodoItemMenu } from "~/components/todo/todoItemMenu";
+
+import { completeTodo, deleteTodo } from "~/server/serverFunctions";
 
 export const TodoItem: FC<
   Pick<Todo, "title" | "description" | "id" | "completed">
 > = ({ id, title, description, completed }) => {
+  console.log("### TodoItem ###");
+
+  const handleCompleteTodo = async () => {
+    "use server";
+    await completeTodo(id);
+  };
+
+  const handleDeleteTodo = async () => {
+    "use server";
+    await deleteTodo(id);
+  };
+
   return (
     <Card className="aliign-be flex flex-row justify-between">
       <CardHeader className="p-4">
@@ -22,7 +38,11 @@ export const TodoItem: FC<
 
         <CardDescription>{description}</CardDescription>
       </CardHeader>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex flex-col items-center px-4">
+        <TodoItemMenu
+          completeTodo={handleCompleteTodo}
+          deleteTodo={handleDeleteTodo}
+        />
         <input
           type="checkbox"
           name="selectedTodos"

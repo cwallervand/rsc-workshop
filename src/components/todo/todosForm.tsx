@@ -1,21 +1,27 @@
+// "use client";
 import { type FC } from "react";
 import { type Todo } from "@prisma/client";
 
 import { TodoList } from "~/components/todo/todoList";
 import { TodosActions } from "~/components/todo/todosActions";
 
-import { marksAsCompleted, deleteTodos } from "~/server/serverFunctions";
+import { completeTodos, deleteTodos } from "~/server/serverFunctions";
 
-export const TodosForm: FC<{ todos: Todo[] }> = ({ todos }) => {
+type TodosFormProps = {
+  todos: Todo[];
+  TodoListComponent: React.ReactNode;
+};
+export const TodosForm: FC<TodosFormProps> = ({ todos, TodoListComponent }) => {
   console.log("### TodosForm ###");
-  // async function marksAsCompletedFormAction(formData: FormData) {
+
+  // async function completeTodosFormAction(formData: FormData) {
   //   const selectedTodos = formData.getAll("selectedTodos") as string[];
 
-  //   markCompletedOptimistic(selectedTodos);
-  //   await marksAsCompleted(formData);
+  //   completedTodosOptimistic(selectedTodos);
+  //   await completeTodos(formData);
   // }
 
-  // const [optimisticTodos, markCompletedOptimistic] = useOptimistic(
+  // const [optimisticTodos, completedTodosOptimistic] = useOptimistic(
   //   todos,
   //   (currentTodos: Todo[], selectedTodos: string[]) => {
   //     return currentTodos.map((todo) => {
@@ -33,10 +39,12 @@ export const TodosForm: FC<{ todos: Todo[] }> = ({ todos }) => {
   return (
     <form>
       <TodosActions
-        marksAsCompletedFormAction={marksAsCompleted}
+        completeTodosFormAction={completeTodos}
         deleteTodosFormAction={deleteTodos}
       />
-      <TodoList todos={todos} />
+      {/* <TodoList todos={todos} /> */}
+      {/* <TodoList2 todos={todos} /> */}
+      {TodoListComponent}
     </form>
   );
 };

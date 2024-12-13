@@ -3,7 +3,12 @@ import { type Todo } from "@prisma/client";
 
 import { TodoItem } from "~/components/todo/todoItem";
 
-export const TodoList: FC<{ todos: Todo[] }> = ({ todos }) => {
+export type TodoListProps = {
+  todos: Todo[];
+};
+
+export const TodoList: FC<TodoListProps> = ({ todos }) => {
+  console.log("### TodoList ###", todos);
   return (
     <ul className="todo-list">
       {todos.map((todo) => (

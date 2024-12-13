@@ -57,6 +57,15 @@ export async function completeTodo(id: number) {
   revalidatePath("/");
 }
 
+export async function deleteTodo(id: number) {
+  await db.todo.delete({
+    where: {
+      id,
+    },
+  });
+  revalidatePath("/");
+}
+
 export async function completeTodos(formData: FormData /*ids: number[]*/) {
   const rawFormData = {
     selectedTodos: formData.getAll("selectedTodos"),
