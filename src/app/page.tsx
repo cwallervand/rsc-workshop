@@ -11,8 +11,6 @@ export default async function HomePage() {
     <main className="p-4">
       <section>
         <AddTodoForm className="mb-6" />
-      </section>
-      <section>
         <Suspense fallback={<TodoListSkeleton />}>
           <TodosWidget />
         </Suspense>
