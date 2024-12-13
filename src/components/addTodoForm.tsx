@@ -11,7 +11,7 @@ type AddTodoFormProps = {
 export const AddTodoForm = ({ className }: AddTodoFormProps) => {
   return (
     <form action={addTodo} className={className}>
-      <div className="mb-2 flex flex-row gap-2">
+      <div className="flex flex-row gap-2">
         <Input type="text" name="title" placeholder="Todo" />
         <Button type="submit" className="bg-green-700">
           Add

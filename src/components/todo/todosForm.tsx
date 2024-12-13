@@ -37,7 +37,7 @@ export const TodosForm: FC<TodosFormProps> = ({ todos, TodoListComponent }) => {
   // );
 
   return (
-    <form>
+    <form className="-mt-12">
       <TodosActions
         setTodosDoneFormAction={setTodosDone}
         deleteTodosFormAction={deleteTodos}

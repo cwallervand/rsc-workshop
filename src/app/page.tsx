@@ -10,7 +10,7 @@ export default async function HomePage() {
   return (
     <main className="p-4">
       <section>
-        <AddTodoForm className="mb-6" />
+        <AddTodoForm className="mb-16" />
         <Suspense fallback={<TodoListSkeleton />}>
           <TodosWidget />
         </Suspense>

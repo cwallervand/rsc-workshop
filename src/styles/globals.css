@@ -69,9 +69,13 @@
 }
 
 .selected-todos-actions {
-  display: none;
+  button {
+    display: none;
+  }
 }
 
 .selected-todos-actions:has(+ .todo-list li input[type="checkbox"]:checked) {
-  display: flex;
+  button {
+    display: flex;
+  }
 }
