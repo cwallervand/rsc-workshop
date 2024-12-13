@@ -24,10 +24,12 @@ export const TodoItem: FC<
 
   const handleToggleDoneStatus = async () => {
     "use server";
+
     if (done) {
       await setTodoNotDone(id);
+    } else {
+      await setTodoDone(id);
     }
-    await setTodoDone(id);
   };
 
   const handleDeleteTodo = async () => {
