@@ -3,12 +3,10 @@ import { getTodos } from "~/server/serverFunctions";
 import { TodosForm } from "~/components/todo/todosForm";
 import { CheckBadge } from "~/components/icons/check-badge";
 import { Card, CardTitle } from "~/components/ui/card";
-import { TodoList } from "~/components/todo/todoList";
 
 export const TodosWidget = async () => {
   console.log("### TodosWidget ###");
   const todos = await getTodos();
-  console.log("todos size", todos.length);
 
   if (todos.length === 0) {
     return (
@@ -20,10 +18,5 @@ export const TodosWidget = async () => {
     );
   }
 
-  return (
-    <TodosForm
-      todos={todos}
-      TodoListComponent={<TodoList todos={todos} />}
-    ></TodosForm>
-  );
+  return <TodosForm todos={todos}></TodosForm>;
 };

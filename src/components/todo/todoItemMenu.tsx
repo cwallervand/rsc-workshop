@@ -1,6 +1,8 @@
 "use client";
 import { type FC } from "react";
 
+import { type Todo } from "@prisma/client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,29 +14,28 @@ import { Trash } from "~/components/icons/trash";
 
 import { EllipsisHostizontal } from "~/components/icons/ellipsis-horizontal";
 
+import { deleteTodo, setTodoDoneStatus } from "~/server/serverFunctions";
+
 type TodoItemMenuProps = {
-  toggleDoneStatus: () => Promise<void>;
-  deleteTodo: () => Promise<void>;
-  todoDone: boolean;
+  todo: Todo;
 };
 
-export const TodoItemMenu: FC<TodoItemMenuProps> = ({
-  toggleDoneStatus,
-  deleteTodo,
-  todoDone,
-}) => {
+export const TodoItemMenu: FC<TodoItemMenuProps> = ({ todo }) => {
   console.log("### TodoItemMenu ###");
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <EllipsisHostizontal className="size-8" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem onClick={toggleDoneStatus}>
+        <DropdownMenuItem
+          onClick={() => setTodoDoneStatus(todo.id, !todo.done)}
+        >
           <CheckBadge />
-          {todoDone ? "Set at not done" : "Set as done"}
+          {todo.done ? "Set at not done" : "Set as done"}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={deleteTodo}>
+        <DropdownMenuItem onClick={() => deleteTodo(todo.id)}>
           <Trash />
           Delete
         </DropdownMenuItem>

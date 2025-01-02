@@ -69,6 +69,18 @@ export async function setTodoNotDone(id: number) {
   revalidatePath("/");
 }
 
+export async function setTodoDoneStatus(id: number, done: boolean) {
+  await db.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      done,
+    },
+  });
+  revalidatePath("/");
+}
+
 export async function deleteTodo(id: number) {
   await db.todo.delete({
     where: {
@@ -133,6 +145,15 @@ export async function deleteTodos(formData: FormData) {
     }
   }
 }
+// const toggleTodoDone = async () => {
+//   "use server";
+
+//   if (done) {
+//     await setTodoNotDone(id);
+//   } else {
+//     await setTodoDone(id);
+//   }
+// };
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));

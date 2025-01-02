@@ -13,12 +13,7 @@ export const TodoList: FC<TodoListProps> = ({ todos }) => {
     <ul className="todo-list">
       {todos.map((todo) => (
         <li key={todo.id} className="mb-2">
-          <TodoItem
-            title={todo.title}
-            description={todo.description}
-            id={todo.id}
-            done={todo.done}
-          />
+          <TodoItem todo={todo} />
         </li>
       ))}
     </ul>

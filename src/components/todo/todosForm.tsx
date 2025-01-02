@@ -1,50 +1,46 @@
-// "use client";
-import { type FC } from "react";
+"use client";
+import { type FC, useOptimistic } from "react";
 import { type Todo } from "@prisma/client";
 
-import { TodoList } from "~/components/todo/todoList";
 import { TodosActions } from "~/components/todo/todosActions";
+import { TodoList } from "~/components/todo/todoList";
 
 import { setTodosDone, deleteTodos } from "~/server/serverFunctions";
 
 type TodosFormProps = {
   todos: Todo[];
-  TodoListComponent: React.ReactNode;
 };
-export const TodosForm: FC<TodosFormProps> = ({ todos, TodoListComponent }) => {
-  console.log("### TodosForm ###");
+export const TodosForm: FC<TodosFormProps> = ({ todos }) => {
+  async function setTodosDoneFormAction(formData: FormData) {
+    const selectedTodos = formData.getAll("selectedTodos") as string[];
 
-  // async function completeTodosFormAction(formData: FormData) {
-  //   const selectedTodos = formData.getAll("selectedTodos") as string[];
+    doneTodosOptimistic(selectedTodos);
+    await setTodosDone(formData);
+  }
 
-  //   completedTodosOptimistic(selectedTodos);
-  //   await completeTodos(formData);
-  // }
-
-  // const [optimisticTodos, completedTodosOptimistic] = useOptimistic(
-  //   todos,
-  //   (currentTodos: Todo[], selectedTodos: string[]) => {
-  //     return currentTodos.map((todo) => {
-  //       if (selectedTodos.includes(todo.id.toString())) {
-  //         return {
-  //           ...todo,
-  //           completed: true,
-  //         };
-  //       }
-  //       return todo;
-  //     });
-  //   },
-  // );
+  const [optimisticTodos, doneTodosOptimistic] = useOptimistic(
+    todos,
+    (currentTodos: Todo[], selectedTodos: string[]) => {
+      return currentTodos.map((todo) => {
+        if (selectedTodos.includes(todo.id.toString())) {
+          return {
+            ...todo,
+            done: true,
+          };
+        }
+        return todo;
+      });
+    },
+  );
+  console.log("### TodosForm ###", optimisticTodos);
 
   return (
     <form className="-mt-12">
       <TodosActions
-        setTodosDoneFormAction={setTodosDone}
+        setTodosDoneFormAction={setTodosDoneFormAction}
         deleteTodosFormAction={deleteTodos}
       />
-      {/* <TodoList todos={todos} /> */}
-      {/* <TodoList2 todos={todos} /> */}
-      {TodoListComponent}
+      <TodoList todos={optimisticTodos} />
     </form>
   );
 };
