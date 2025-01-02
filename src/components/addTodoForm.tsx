@@ -1,6 +1,6 @@
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
-import { Button } from "~/components/ui/button";
+import { AddTodoSubmitButton } from "~/components/addTodoSubmitButton";
 
 import { addTodo } from "~/server/serverFunctions";
 
@@ -13,9 +13,7 @@ export const AddTodoForm = ({ className }: AddTodoFormProps) => {
     <form action={addTodo} className={className}>
       <div className="flex flex-row gap-2">
         <Input type="text" name="title" placeholder="Todo" />
-        <Button type="submit" className="bg-green-700">
-          Add
-        </Button>
+        <AddTodoSubmitButton />
       </div>
       <details>
         <summary>Details</summary>
