@@ -39,34 +39,11 @@ export async function addTodo(formData: FormData) {
 }
 
 export async function getTodos(): Promise<Todo[]> {
+  console.log("------------ getTodos ------------");
   await delay(1000);
   const todos: Todo[] = await db.todo.findMany();
 
   return todos;
-}
-
-export async function setTodoDone(id: number) {
-  await db.todo.update({
-    where: {
-      id,
-    },
-    data: {
-      done: true,
-    },
-  });
-  revalidatePath("/");
-}
-
-export async function setTodoNotDone(id: number) {
-  await db.todo.update({
-    where: {
-      id,
-    },
-    data: {
-      done: false,
-    },
-  });
-  revalidatePath("/");
 }
 
 export async function setTodoDoneStatus(id: number, done: boolean) {
@@ -145,15 +122,6 @@ export async function deleteTodos(formData: FormData) {
     }
   }
 }
-// const toggleTodoDone = async () => {
-//   "use server";
-
-//   if (done) {
-//     await setTodoNotDone(id);
-//   } else {
-//     await setTodoDone(id);
-//   }
-// };
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
