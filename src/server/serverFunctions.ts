@@ -58,6 +58,18 @@ export async function setTodoDoneStatus(id: number, done: boolean) {
   revalidatePath("/");
 }
 
+export async function updateTodoTitle(id: number, title: string) {
+  await db.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      title,
+    },
+  });
+  revalidatePath("/");
+}
+
 export async function deleteTodo(id: number) {
   await db.todo.delete({
     where: {
@@ -74,7 +86,6 @@ export async function setTodosDone(formData: FormData /*ids: number[]*/) {
 
   try {
     const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
-    console.log("selectedTodos", selectedTodos);
     await delay(1000);
 
     await db.todo.updateMany({
@@ -104,7 +115,6 @@ export async function deleteTodos(formData: FormData) {
 
   try {
     const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
-    console.log("selectedTodos", selectedTodos);
     await delay(1000);
     await db.todo.deleteMany({
       where: {
