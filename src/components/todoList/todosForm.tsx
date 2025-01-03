@@ -2,8 +2,8 @@
 import { type FC, useOptimistic } from "react";
 import { type Todo } from "@prisma/client";
 
-import { TodosActions } from "~/components/todo/todosActions";
-import { TodoList } from "~/components/todo/todoList";
+import { TodosActions } from "~/components/todoList/todosActions";
+import { TodoList } from "~/components/todoList/todoList";
 
 import { setTodosDone, deleteTodos } from "~/server/serverFunctions";
 

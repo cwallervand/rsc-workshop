@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { AddTodoForm } from "~/components/addTodoForm";
-import { TodosWidget } from "~/components/todo/todosWidget";
-import { TodoListSkeleton } from "~/components/todo/todoListSkeleton";
+import { TodosWidget } from "~/components/todoList/todosWidget";
+import { TodoListSkeleton } from "~/components/todoList/todoListSkeleton";
 import { ClientComponent } from "~/components/clientComponent";
 import { ServerComponent } from "~/components/serverComponent";
 

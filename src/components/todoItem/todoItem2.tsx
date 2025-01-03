@@ -8,8 +8,8 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 
-import { TodoItemMenu } from "~/components/todo/todoItemMenu";
-import { ToggleTodoStatus } from "~/components/todo/toggleTodoStatus";
+import { TodoItemMenu } from "~/components/todoItem/todoItemMenu";
+import { ToggleTodoStatus } from "~/components/todoItem/toggleTodoStatus";
 
 type TodoItem2Props = {
   todo: Todo;

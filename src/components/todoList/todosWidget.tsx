@@ -3,7 +3,7 @@ import { getTodos } from "~/server/serverFunctions";
 // import { TodosForm } from "~/components/todo/todosForm";
 import { CheckBadge } from "~/components/icons/check-badge";
 import { Card, CardTitle } from "~/components/ui/card";
-import { TodoList2 } from "~/components/todo/todoList2";
+import { TodoList2 } from "~/components/todoList/todoList2";
 
 export const TodosWidget = async () => {
   console.log("### TodosWidget ###");

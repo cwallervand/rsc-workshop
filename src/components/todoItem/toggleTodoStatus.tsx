@@ -4,8 +4,8 @@ import { type FC, useOptimistic } from "react";
 import { type Todo } from "@prisma/client";
 
 import { Button } from "~/components/ui/button";
-
 import { CheckBadge } from "~/components/icons/check-badge";
+
 import { setTodoDoneStatus } from "~/server/serverFunctions";
 
 type ToggleTodoStatusProps = {

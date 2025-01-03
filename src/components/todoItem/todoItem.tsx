@@ -9,7 +9,7 @@ import {
 } from "~/components/ui/card";
 
 import { CheckBadge } from "~/components/icons/check-badge";
-import { TodoItemMenu } from "~/components/todo/todoItemMenu";
+import { TodoItemMenu } from "~/components/todoItem/todoItemMenu";
 
 type TodoItemProps = {
   todo: Todo;
