@@ -18,7 +18,6 @@ export const TodoItem2: FC<TodoItem2Props> = ({ todo }) => {
     <Card className="flex flex-row justify-between">
       <CardHeader className="p-4">
         <div className="flex flex-row items-center gap-2">
-          {/* <CardTitle>{todo.title}</CardTitle> */}
           <TodoTitle todo={todo} />
         </div>
 
