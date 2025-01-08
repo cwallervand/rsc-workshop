@@ -1,5 +1,5 @@
 "use client";
-import { type FC, useOptimistic, useState, useRef } from "react";
+import { type FC, useState } from "react";
 import { type Todo } from "@prisma/client";
 
 import { CardTitle } from "~/components/ui/card";
@@ -15,42 +15,34 @@ type TodoTitleProps = {
 };
 
 export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
-  const [optimisticTodo, updateOptimisticTodoTitle] = useOptimistic(
-    todo,
-    (currentTodo: Todo, optimisticTitle: string) => ({
-      ...currentTodo,
-      title: optimisticTitle,
-    }),
-  );
-  const inputRef = useRef<HTMLInputElement>(null);
+  console.log("TODO TITLE RENDER");
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
+  const editTitleInputId = `editTitleInput-${todo.id}`;
 
-  // TODO: form data validation
-  // TODO: Set back to no edit mode on save
-  async function updateTitleAction() {
-    const newTitle = inputRef.current?.value ?? optimisticTodo.title;
-    updateOptimisticTodoTitle(newTitle);
-    await updateTodoTitle(todo.id, newTitle);
-  }
+  const updateTitleAction = () => {
+    console.log("_______updateTitleAction________");
+
+    setIsEditTitleMode(false);
+  };
 
   return (
     <>
       {isEditTitleMode ? (
         <form action={updateTitleAction}>
           <Input
+            id={editTitleInputId}
             type="text"
             name="title"
-            placeholder={optimisticTodo.title}
-            ref={inputRef}
+            defaultValue={todo.title}
           />
         </form>
       ) : (
-        <CardTitle>{optimisticTodo.title}</CardTitle>
+        <CardTitle>{todo.title}</CardTitle>
       )}
 
       <Button
         variant="ghost"
-        type="submit"
+        type="button"
         size="icon"
         className="border-0 [&_svg]:size-5"
         onClick={() => {

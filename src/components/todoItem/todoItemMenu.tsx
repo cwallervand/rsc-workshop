@@ -1,5 +1,6 @@
 "use client";
 import { type FC } from "react";
+import Link from "next/link";
 
 import { type Todo } from "@prisma/client";
 
@@ -29,6 +30,9 @@ export const TodoItemMenu: FC<TodoItemMenuProps> = ({ todo }) => {
         <EllipsisHostizontal className="size-8" />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
+        <DropdownMenuItem>
+          <Link href={`/${todo.id}`}>Details</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTodoDoneStatus(todo.id, !todo.done)}
         >
