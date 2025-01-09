@@ -5,6 +5,7 @@ import { type Todo } from "@prisma/client";
 import { CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
+import { Check } from "lucide-react";
 
 import { Pencil } from "~/components/icons/pencil";
 
@@ -27,48 +28,56 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
   const editTitleInputId = `editTitleInput-${todo.id}`;
 
-  const updateTitleAction = () => {
-    console.log("_______updateTitleAction________");
+  const handleUpdateTodoTitle = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const inputElement = document.getElementById(
+      editTitleInputId,
+    ) as HTMLInputElement;
 
+    const newTitle = inputElement.value;
     setIsEditTitleMode(false);
-  };
 
-  const handleUpdateTodoTitle = () => {
     startTransition(async () => {
-      updateOptimisticTodoTitle("test");
-      await updateTodoTitle(todo.id, "test");
+      updateOptimisticTodoTitle(newTitle);
+      await updateTodoTitle(todo.id, newTitle);
     });
   };
 
   return (
     <>
       {isEditTitleMode ? (
-        <form action={updateTitleAction}>
+        <form onSubmit={handleUpdateTodoTitle} className="flex gap-2">
           <Input
             id={editTitleInputId}
             type="text"
             name="title"
-            defaultValue={todo.title}
+            defaultValue={optimisticTodo.title}
           />
+          <Button
+            variant="ghost"
+            type="submit"
+            size="icon"
+            className="border-0 [&_svg]:size-6"
+          >
+            <Check className="text-green-700" />
+          </Button>
         </form>
       ) : (
         <CardTitle>{optimisticTodo.title}</CardTitle>
       )}
-
-      <Button
-        variant="ghost"
-        type="button"
-        size="icon"
-        className="border-0 [&_svg]:size-5"
-        onClick={() => {
-          setIsEditTitleMode(!isEditTitleMode);
-        }}
-      >
-        <Pencil strokeWidth={1.8} />
-      </Button>
-      <Button type="button" onClick={handleUpdateTodoTitle}>
-        Test
-      </Button>
+      {!isEditTitleMode && (
+        <Button
+          variant="ghost"
+          type="button"
+          size="icon"
+          className="border-0 [&_svg]:size-5"
+          onClick={() => {
+            setIsEditTitleMode(!isEditTitleMode);
+          }}
+        >
+          <Pencil strokeWidth={1.8} />
+        </Button>
+      )}
     </>
   );
 };
