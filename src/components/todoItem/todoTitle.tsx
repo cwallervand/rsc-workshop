@@ -1,5 +1,5 @@
 "use client";
-import { type FC, useState } from "react";
+import { type FC, useState, useOptimistic, useTransition } from "react";
 import { type Todo } from "@prisma/client";
 
 import { CardTitle } from "~/components/ui/card";
@@ -15,7 +15,15 @@ type TodoTitleProps = {
 };
 
 export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
-  console.log("TODO TITLE RENDER");
+  const [optimisticTodo, updateOptimisticTodoTitle] = useOptimistic(
+    todo,
+    (currentTodo: Todo, optimisitcTodoTitle: string) => ({
+      ...currentTodo,
+      title: optimisitcTodoTitle,
+    }),
+  );
+  const [isPending, startTransition] = useTransition();
+
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
   const editTitleInputId = `editTitleInput-${todo.id}`;
 
@@ -23,6 +31,13 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
     console.log("_______updateTitleAction________");
 
     setIsEditTitleMode(false);
+  };
+
+  const handleUpdateTodoTitle = () => {
+    startTransition(async () => {
+      updateOptimisticTodoTitle("test");
+      await updateTodoTitle(todo.id, "test");
+    });
   };
 
   return (
@@ -37,7 +52,7 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
           />
         </form>
       ) : (
-        <CardTitle>{todo.title}</CardTitle>
+        <CardTitle>{optimisticTodo.title}</CardTitle>
       )}
 
       <Button
@@ -50,6 +65,9 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
         }}
       >
         <Pencil strokeWidth={1.8} />
+      </Button>
+      <Button type="button" onClick={handleUpdateTodoTitle}>
+        Test
       </Button>
     </>
   );
