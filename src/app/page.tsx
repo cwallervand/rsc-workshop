@@ -8,7 +8,7 @@ import { ServerComponent } from "~/components/serverComponent";
 export default async function HomePage() {
   console.log("### HomePage ###");
   return (
-    <main className="p-4">
+    <main>
       <section>
         <AddTodoForm className="mb-16" />
         <Suspense fallback={<TodoListSkeleton />}>

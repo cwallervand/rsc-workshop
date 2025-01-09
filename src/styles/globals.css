@@ -66,6 +66,14 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  main {
+    @apply p-4;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
 }
 
 .selected-todos-actions {
