@@ -14,7 +14,9 @@ export default async function HomePage() {
       </header>
 
       <main className="container mx-auto px-4">
-        <AddTodoForm className="mb-16" />
+        <section className="-mt-14">
+          <AddTodoForm className="mb-16" />
+        </section>
 
         <section>
           <Suspense fallback={<TodoListSkeleton />}>
