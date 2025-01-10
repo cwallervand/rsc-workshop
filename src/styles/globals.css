@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,7 +63,7 @@
 @layer base {
   * {
     @apply border-border;
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
   }
   body {
     @apply bg-background text-foreground;
@@ -75,18 +75,19 @@
 
   h1 {
     @apply text-2xl;
-    font-family: 'Gochi Hand', sans-serif;
+    font-family: "Gochi Hand", sans-serif;
   }
 }
 
-.selected-todos-actions {
-  button {
-    display: none;
-  }
+.server,
+.client {
+  @apply mb-4 border-2 p-4 text-xl;
 }
 
-.selected-todos-actions:has(+ .todo-list li input[type="checkbox"]:checked) {
-  button {
-    display: flex;
-  }
+.server {
+  @apply border-rose-500 text-rose-500;
+}
+
+.client {
+  @apply border-emerald-500 text-emerald-500;
 }
