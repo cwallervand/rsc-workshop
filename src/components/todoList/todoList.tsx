@@ -8,7 +8,6 @@ export type TodoListProps = {
 };
 
 export const TodoList: FC<TodoListProps> = ({ todos }) => {
-  console.log("### TodoList ###", todos);
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
