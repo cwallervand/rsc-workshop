@@ -1,4 +1,5 @@
 import { AnotherClientComponent } from "~/components/anotherClientComponent";
+import { AnotherServerComponent } from "~/components/anotherServerComponent";
 import { ClientComponent } from "~/components/clientComponent";
 import { ServerComponent } from "~/components/serverComponent";
 
@@ -21,7 +22,9 @@ export default async function HomePage() {
         <ClientComponent message="I have a Client Component child!">
           <ClientComponent message="I am a Client Component inside another Client Component!" />
         </ClientComponent>
-        <AnotherClientComponent />
+        <AnotherClientComponent
+          slot={<AnotherServerComponent message="I am Another Server Component passed as a prop to Another Client Component!" />}
+        />
       </section>
     </main>
   );

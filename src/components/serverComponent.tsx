@@ -1,5 +1,7 @@
 import React from "react";
 
+import { getComponentTypeClass } from "~/components/utils/componentTypeUtils";
+
 type ServerComponentProps = {
   message?: string;
   children?: React.ReactNode;
@@ -8,9 +10,9 @@ type ServerComponentProps = {
 export const ServerComponent = ({ message = "Hello Server Component!", children }: ServerComponentProps) => {
   console.log("### ServerComponent ###");
   return (
-    <div className={typeof window === "undefined" ? "server" : "client"}>
-      <p>{message}</p>
+    <div className={getComponentTypeClass}>
+      <p>{message}</p >
       {children}
-    </div>
+    </div >
   );
 };
