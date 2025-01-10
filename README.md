@@ -1,4 +1,13 @@
-# Create T3 App
+# TODO app
+
+## Oppgave 1: Hello Server Component!
+
+I denne oppgaven skal du bruke litt tid på å utforske hvordan klient-komponenter og server-komponenter blir rendret og brukt i applikasjonen.
+
+- Hva rendres på server?
+- Hva rendres på klient?
+- Hvordan brukes klient-komponenter og server-komponenter om hverandre?
+- Hva skjer hvis du f.eks prøver å bruke `useState` i en server-komponent?
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
 
