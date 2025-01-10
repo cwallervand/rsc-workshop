@@ -1,7 +1,3 @@
-import { Suspense } from "react";
-import { AddTodoForm } from "~/components/addTodoForm";
-import { TodosWidget } from "~/components/todoList/todosWidget";
-import { TodoListSkeleton } from "~/components/todoList/todoListSkeleton";
 import { ClientComponent } from "~/components/clientComponent";
 import { ServerComponent } from "~/components/serverComponent";
 
@@ -10,13 +6,12 @@ export default async function HomePage() {
   return (
     <main>
       <section>
-        <AddTodoForm className="mb-16" />
-        <Suspense fallback={<TodoListSkeleton />}>
-          <TodosWidget />
-        </Suspense>
+        <ServerComponent />
+        <ServerComponent message="Hello there!">
+          <ServerComponent message="I am a Server Component inside another Server Component!" />
+        </ServerComponent>
+        <ClientComponent />
       </section>
-      <ServerComponent />
-      <ClientComponent />
     </main>
   );
 }
