@@ -8,8 +8,8 @@ type ClientComponentProps = {
 export const ClientComponent = ({ message = "Hello Client Component!", children }: ClientComponentProps) => {
   console.log("### ClientComponent ###");
   return (
-    <div>
-      <p className="text-xl">{message}</p>
+    <div className="client">
+      <p>{message}</p>
       {children}
     </div>
   );

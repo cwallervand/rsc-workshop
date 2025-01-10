@@ -8,8 +8,8 @@ type ServerComponentProps = {
 export const ServerComponent = ({ message = "Hello Server Component!", children }: ServerComponentProps) => {
   console.log("### ServerComponent ###");
   return (
-    <div>
-      <p className="text-xl">{message}</p>
+    <div className={typeof window === "undefined" ? "server" : "client"}>
+      <p>{message}</p>
       {children}
     </div>
   );
