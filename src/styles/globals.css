@@ -76,14 +76,10 @@
   }
 }
 
-.selected-todos-actions {
-  button {
-    display: none;
-  }
+.server {
+  @apply border-2 border-rose-500 text-rose-500;
 }
 
-.selected-todos-actions:has(+ .todo-list li input[type="checkbox"]:checked) {
-  button {
-    display: flex;
-  }
+.client {
+  @apply border-2 border-emerald-500 text-emerald-500;
 }
