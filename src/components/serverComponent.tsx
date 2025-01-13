@@ -7,7 +7,7 @@ type ServerComponentProps = {
   children?: React.ReactNode;
 }
 
-export const ServerComponent = ({ message = "Hello Server Component!", children }: ServerComponentProps) => {
+export const ServerComponent = ({ message = "Hello ServerComponent!", children }: ServerComponentProps) => {
   console.log("### ServerComponent ###");
   return (
     <div className={getComponentTypeClass}>

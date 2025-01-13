@@ -1,7 +1,9 @@
-import { AnotherClientComponent } from "~/components/anotherClientComponent";
-import { AnotherServerComponent } from "~/components/anotherServerComponent";
-import { ClientComponent } from "~/components/clientComponent";
+
 import { ServerComponent } from "~/components/serverComponent";
+import { ClientComponent } from "~/components/clientComponent";
+import { ClientComponentWithSlot } from "~/components/clientComponentWithSlot";
+import { ClientComponentWithButton } from "~/components/clientComponentWithButton";
+import { ClientComponentWithServerComponentImport } from "~/components/clientComponentWithServerComponentImport";
 
 export default async function HomePage() {
   console.log("### HomePage ###");
@@ -9,22 +11,25 @@ export default async function HomePage() {
     <main>
       <section>
         <ServerComponent />
-        <ServerComponent message="Hello there!">
-          <ServerComponent message="I am a Server Component inside another Server Component!" />
-        </ServerComponent>
-        <ServerComponent message="I have a Client Component child!">
-          <ClientComponent message="I am a Client Component inside another Server Component!" />
-        </ServerComponent>
-        <ClientComponent />
-        <ClientComponent message="Hello there!">
-          <ServerComponent message="I am a Server Component inside another Client Component!" />
-        </ClientComponent>
-        <ClientComponent message="I have a Client Component child!">
-          <ClientComponent message="I am a Client Component inside another Client Component!" />
-        </ClientComponent>
-        <AnotherClientComponent
-          slot={<AnotherServerComponent message="I am Another Server Component passed as a prop to Another Client Component!" />}
-        />
+        {/* <ServerComponent message="Hello there!">
+          <ServerComponent message="I am a ServerComponent and I have a ServerComponent parent!" />
+        </ServerComponent> */}
+        {/* <ServerComponent message="I am a ServerComponent and I have a ClientComponent child!">
+          <ClientComponent message="I am a ClientComponent and I have a ServerComponent parent!" />
+        </ServerComponent> */}
+        {/* <ClientComponent /> */}
+        {/* <ClientComponent message="I have a ClientComponent child!">
+          <ClientComponent message="I am a ClientComponent and I have a ClientComponent parent!" />
+        </ClientComponent> */}
+        {/* <ClientComponent message="I am a ClientComponent and I have a ServerComponent child!">
+          <ServerComponent message="I am a ServerComponent inside another ClientComponent!" />
+        </ClientComponent> */}
+
+        {/* <ClientComponentWithSlot
+          slot={<ServerComponent message="I am a ServerComponent passed as a prop to ClientComponent!" />}
+        /> */}
+        {/* <ClientComponentWithButton /> */}
+        {/* <ClientComponentWithServerComponentImport /> */}
       </section>
     </main>
   );
