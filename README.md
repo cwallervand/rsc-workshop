@@ -56,11 +56,13 @@ Fra og med denne opgpaven så skal det videreutvikles en TODO app. Noe funksjona
 Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å være en server komponent.
 
 Det er allerede satt opp en database (SQLite) som er populert med noen TODO-er.
+Prisma er brukt som ORM og det finnes allerede en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
 
 TODO-er kan hentes fra databasen slik:
 
 ```ts
 import { db } from "~/server/db";
+import { type Todo } from "@prisma/client";
 
 const todos: Todo[] = await db.todo.findMany();
 ```
@@ -80,4 +82,69 @@ const todos: Todo[] = await db.todo.findMany();
 <details>
   <summary>Hint 4</summary>
   <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
+</details>
+
+### Oppgave 3: Opprette en ny TODO
+
+```
+git checkout task-3
+```
+
+I denne oppgaven så skal det implementeres funksjonalitet for å opprette en ny TODO.
+
+Her er noen krav for denne faturen:
+
+- En TODO må ha en tittel
+- En TODO kan ha en beskrivelse
+- Mens det skrives til databasen så skal lagre-knappen disables
+- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
+- [`zod`](https://zod.dev/) skal brukes for å validere dataene
+- Det skal legges til støtte for feilhåndtering, men feilhåndtering skal ikke håndteres i denne oppgaven
+
+<details>
+  <summary>Hint 1: Hvordan bruke FormData</summary>
+  <p>
+    <pre>
+      <code>
+      function addTodo(formData: FormData) {
+        const rawFormData = {
+          title: formData.get("title"),
+          description: formData.get("description"),
+        };
+      }
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 2: Hvordan bruke <code>zod</code> for å validere FormData</summary>
+  <p>
+    <pre>
+      <code>
+        function addTodo(formData: FormData) {
+          const rawFormData = {
+            title: formData.get("title"),
+            description: formData.get("description"),
+          };
+          const createTodoSchema = z.object({
+            title: z.string().min(1),
+            description: z.string().nullish(),
+          });
+          try {
+            const validTodo = createTodoSchema.parse(rawFormData);
+          } catch (error) {}
+        }
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 1</summary>
+  <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
+  <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
+</details>
+<details>
+  <summary>Hint 2</summary>
+  <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
+  <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
