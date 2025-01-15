@@ -1,9 +1,4 @@
-import { Suspense } from "react";
-import { AddTodoForm } from "~/components/addTodoForm";
 import { TodosWidget } from "~/components/todoList/todosWidget";
-import { TodoListSkeleton } from "~/components/todoList/todoListSkeleton";
-import { ClientComponent } from "~/components/clientComponent";
-import { ServerComponent } from "~/components/serverComponent";
 
 export default async function HomePage() {
   console.log("### HomePage ###");
@@ -14,17 +9,9 @@ export default async function HomePage() {
       </header>
 
       <main className="container mx-auto px-4">
-        <section className="-mt-14">
-          <AddTodoForm className="mb-16" />
-        </section>
-
         <section>
-          <Suspense fallback={<TodoListSkeleton />}>
-            <TodosWidget />
-          </Suspense>
+          <TodosWidget />
         </section>
-        <ServerComponent />
-        <ClientComponent />
       </main>
     </>
   );
