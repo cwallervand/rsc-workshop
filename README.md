@@ -24,9 +24,16 @@ I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette
 
 ## Oppgave 1: Hello Server Component!
 
-I denne oppgaven skal du bruke litt tid på å utforske hvordan klient-komponenter og server-komponenter blir rendret og brukt i applikasjonen.
+I denne oppgaven skal du utforske litt hvordan klient- og server-komponenter blir rendret og hvordan komposisjon kan gjøres.
 
-- Hva rendres på server?
-- Hva rendres på klient?
+Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000). Anbefaler å bruke en Chrome-baseret nettleser for godt utviklerverktøy.
+
+Åpne filen [src/app/page.tsx](./src/app/page.tsx) og utforsk hvordan de forskjellige komponentene oppfører seg.
+Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./src/components/serverComponent.tsx).
+
+- Hvor kjøres / rendres komponenten? Se i loggene på server og på klient.
+- Er den med innkludert i JS-bundle på klienten?
 - Hvordan brukes klient-komponenter og server-komponenter om hverandre?
 - Hva skjer hvis du f.eks prøver å bruke `useState` i en server-komponent?
+
+Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk videre.
