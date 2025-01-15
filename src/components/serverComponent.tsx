@@ -8,7 +8,7 @@ type ServerComponentProps = {
 export const ServerComponent = (
   { message = "Hello ServerComponent!", children }: ServerComponentProps
 ) => {
-  console.log("### ServerComponent ###");
+  console.log(`### ServerComponent: ${message} ###`);
   return (
     <div className={getComponentTypeClass}>
       <p>{message}</p >

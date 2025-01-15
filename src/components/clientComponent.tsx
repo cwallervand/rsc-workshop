@@ -7,8 +7,10 @@ type ClientComponentProps = {
   children?: React.ReactNode;
 }
 
-export const ClientComponent = ({ message = "Hello ClientComponent! I am included in the JS bundle!", children }: ClientComponentProps) => {
-  console.log("### ClientComponent ###");
+export const ClientComponent = (
+  { message = "Hello ClientComponent!", children }: ClientComponentProps
+) => {
+  console.log(`### ClientComponent: ${message} ###`);
   const componentTypeClass = useComponentTypeClass();
   return (
     <div className={componentTypeClass}>

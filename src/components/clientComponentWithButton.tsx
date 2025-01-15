@@ -10,7 +10,7 @@ export const ClientComponentWithButton = () => {
   console.log("### ClientComponentWithButton ###");
   const [renderServerComponent, setRenderServerComponent] = useState(false);
   return (
-    <ClientComponent message="I am a ClientComponent, please click my button! Also, I am included in the JS bundle!">
+    <ClientComponent message="I am a ClientComponent, please click my button!">
       <div>
         <button className="client" onClick={() => setRenderServerComponent(true)}>
           Click me!
