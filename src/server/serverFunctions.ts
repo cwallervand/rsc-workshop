@@ -6,10 +6,6 @@ import { type Todo } from "@prisma/client";
 
 import { db } from "~/server/db";
 
-const selectedTodosSchema = z.object({
-  selectedTodos: z.coerce.number().array(),
-});
-
 export async function addTodo(formData: FormData) {
   const rawFormData = {
     title: formData.get("title"),
@@ -39,7 +35,6 @@ export async function addTodo(formData: FormData) {
 }
 
 export async function getTodos(): Promise<Todo[]> {
-  console.log("------------ getTodos ------------");
   await delay(1000);
   const todos: Todo[] = await db.todo.findMany();
 
@@ -47,7 +42,6 @@ export async function getTodos(): Promise<Todo[]> {
 }
 
 export async function getTodo(id: number): Promise<Todo> {
-  console.log("------------ getTodo ------------");
   const todo: Todo | null = await db.todo.findUnique({
     where: { id },
   });
@@ -90,60 +84,6 @@ export async function deleteTodo(id: number) {
     },
   });
   revalidatePath("/");
-}
-
-export async function setTodosDone(formData: FormData /*ids: number[]*/) {
-  const rawFormData = {
-    selectedTodos: formData.getAll("selectedTodos"),
-  };
-
-  try {
-    const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
-    await delay(1000);
-
-    await db.todo.updateMany({
-      where: {
-        id: {
-          in: selectedTodos,
-        },
-      },
-      data: {
-        done: true,
-      },
-    });
-    revalidatePath("/");
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      console.error("Validation failed:", error.errors);
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
-}
-
-export async function deleteTodos(formData: FormData) {
-  const rawFormData = {
-    selectedTodos: formData.getAll("selectedTodos"),
-  };
-
-  try {
-    const selectedTodos = selectedTodosSchema.parse(rawFormData).selectedTodos;
-    await delay(1000);
-    await db.todo.deleteMany({
-      where: {
-        id: {
-          in: selectedTodos,
-        },
-      },
-    });
-    revalidatePath("/");
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      console.error("Validation failed:", error.errors);
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
 }
 
 function delay(ms: number): Promise<void> {
