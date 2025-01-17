@@ -14,15 +14,15 @@ I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette
 
 ## Oppsett
 
-Hvis du har Docker så kan du initialisere applikasjonen i en Web Container. Alternativt så kan du initialisere applikasjonen manuelt.
+Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alternativt så kan du initialisere applikasjonen manuelt.
 
 ### Manuelt
 
-1. `npm ci`
+1. `npm i`
 2. `npm run db:generate`
 3. `npm run db:seed`
 
-### Med web container (Docker)
+### Med dev container (Docker)
 
 ## Oppgaver
 
@@ -34,7 +34,7 @@ git checkout task-1
 
 I denne oppgaven skal du utforske litt hvordan klient- og server-komponenter blir rendret og hvordan komposisjon kan gjøres.
 
-Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000). Anbefaler å bruke en Chrome-baseret nettleser for godt utviklerverktøy.
+Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000).
 
 Åpne filen [src/app/page.tsx](./src/app/page.tsx) og utforsk hvordan de forskjellige komponentene oppfører seg.
 Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./src/components/serverComponent.tsx).
