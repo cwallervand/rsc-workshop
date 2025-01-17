@@ -92,7 +92,7 @@ git checkout task-3
 
 I denne oppgaven så skal det implementeres funksjonalitet for å opprette en ny TODO.
 
-Her er noen krav for denne faturen:
+Her er noen krav for denne featuren:
 
 - En TODO må ha en tittel
 - En TODO kan ha en beskrivelse
@@ -157,6 +157,8 @@ Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig b
 
 I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
-I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
-Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
-Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `src/components/todoList`.
+Her er noen krav for denne featuren:
+
+- I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
+- Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
+- Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
