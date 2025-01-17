@@ -139,12 +139,29 @@ Her er noen krav for denne featuren:
   </p>
 </details>
 <details>
-  <summary>Hint 3: Hvordan bruke Server Functions til å gjøre en form submit</summary>
+  <summary>Hint 3: Hvordan oppdatere et enkelt felt på en TODO mot databasen</summary>
+  <p>
+    <pre>
+      <code>
+        db.todo.update({
+          where: {
+            id,
+          },
+          data: {
+            title,
+          },
+        });
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 4: Hvordan bruke Server Functions til å gjøre en form submit</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 4: En ny måte å hente status på form status</summary>
+  <summary>Hint 5: En ny måte å hente status på form status</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
@@ -171,5 +188,16 @@ Her er noen krav for denne featuren:
 
 - Hver todo skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på en TODO
-- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic].(https://react.dev/reference/react/useOptimistic)
+- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på TODO-en.
+
+### Oppgave 6: Endre tittel på en TODO + optimistisk UI
+
+I denne oppgaven skal du legge til en feature for å endre tittelen på en TODO.
+
+Her er noen krav for denne featuren:
+
+- Det skal være to moduser for tittelen på en TODO: visningsmodus og redigeringsmodus.
+- Når man lagrer tittelen så skal man med en gang gå til visningsmodus og den nye tittelen skal vises (selv om man ikke har fått svar fra serveren).
+- UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- Ved oppdateringsfeil skal UIet vise den faktiske tittelen på TODO-en.
