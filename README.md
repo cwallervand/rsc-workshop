@@ -20,6 +20,7 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 
 1. `npm i`
 2. `npm run db:generate`
+3. `npm run db:seed`
 
 ### Med dev container (Docker)
 
