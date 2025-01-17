@@ -170,15 +170,16 @@ Her er noen krav for denne featuren:
 
 ### Oppgave 4: Bedre UX med Suspense
 
-Ppå grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
+På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
-Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig behandlet (rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
+Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
 
 I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
+I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
+
 Her er noen krav for denne featuren:
 
-- I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
 - Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
 - Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
 
