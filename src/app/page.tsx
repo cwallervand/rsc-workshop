@@ -1,6 +1,6 @@
 import { TodosWidget } from "~/components/todoList/todosWidget";
 
-export default async function HomePage() {
+export default function HomePage() {
   console.log("### HomePage ###");
   return (
     <>
