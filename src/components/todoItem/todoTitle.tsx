@@ -30,7 +30,7 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
 
   const handleUpdateTodoTitle = async (event: React.FormEvent) => {
     event.preventDefault();
-    // TODO: fin input fra form
+
     const inputElement = document.getElementById(
       editTitleInputId,
     ) as HTMLInputElement;
@@ -40,7 +40,6 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
 
     startTransition(async () => {
       updateOptimisticTodoTitle(newTitle);
-
       await updateTodoTitle(todo.id, newTitle);
     });
   };

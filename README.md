@@ -189,10 +189,15 @@ I denne oppgaven skal du legge til en feature for å endre statusen på en TODO 
 
 Her er noen krav for denne featuren:
 
-- Hver todo skal vise en indikasjon på status
+- Hver TODO i listen skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på en TODO
 - UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på TODO-en.
+
+<details>
+  <summary>Hint 1: Hvordan sette optimistisk status og lagre til databasen</summary>
+  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+</details>
 
 ### Oppgave 6: Endre tittel på en TODO + optimistisk UI
 
@@ -201,6 +206,15 @@ I denne oppgaven skal du legge til en feature for å endre tittelen på en TODO.
 Her er noen krav for denne featuren:
 
 - Det skal være to moduser for tittelen på en TODO: visningsmodus og redigeringsmodus.
-- Når man lagrer tittelen så skal man med en gang gå til visningsmodus og den nye tittelen skal vises (selv om man ikke har fått svar fra serveren).
 - UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske tittelen på TODO-en.
+- Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
+
+<details>
+  <summary>Hint 1: Hvordan sette optimistisk status og lagre til databasen</summary>
+  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+</details>
+<details>
+  <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
+  Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
+</details>
