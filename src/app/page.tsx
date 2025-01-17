@@ -1,3 +1,4 @@
+import { AddTodoForm } from "~/components/addTodoForm";
 import { TodosWidget } from "~/components/todoList/todosWidget";
 
 export default function HomePage() {
@@ -9,6 +10,9 @@ export default function HomePage() {
       </header>
 
       <main className="container mx-auto px-4">
+        <section>
+          <AddTodoForm className="mb-16" />
+        </section>
         <section>
           <TodosWidget />
         </section>

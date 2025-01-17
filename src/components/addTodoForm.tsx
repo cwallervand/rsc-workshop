@@ -1,5 +1,3 @@
-import { addTodo } from "~/server/serverFunctions";
-import { TodoInput } from "./todoInput/todoInput";
 
 type AddTodoFormProps = {
   className?: string;
@@ -7,8 +5,8 @@ type AddTodoFormProps = {
 
 export const AddTodoForm = ({ className }: AddTodoFormProps) => {
   return (
-    <form action={addTodo} className={className}>
-      <TodoInput />
+    <form className={className}>
+      <p>Implementer skjemaet</p>
     </form>
   );
 };
