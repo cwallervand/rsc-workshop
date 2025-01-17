@@ -162,3 +162,14 @@ Her er noen krav for denne featuren:
 - I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
 - Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
 - Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+
+### Oppgave 5: Endre status på en TODO + optimistisk UI
+
+I denne oppgaven skal du legge til en feature for å endre statusen på en TODO (gjort / ikke gjort).
+
+Her er noen krav for denne featuren:
+
+- Hver todo skal vise en indikasjon på status
+- Man skal lett kunne endre statusen på en TODO
+- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic].(https://react.dev/reference/react/useOptimistic)
+- Ved oppdateringsfeil skal UIet vise den faktiske statusen på TODO-en.
