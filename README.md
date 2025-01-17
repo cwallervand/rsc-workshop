@@ -1,4 +1,4 @@
-# React Server Components workshop - Todo App
+# React Server Components workshop - Gjøremålsappen Tudlu
 
 ## Workshop beskrivelse
 
