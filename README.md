@@ -1,17 +1,5 @@
 # React Server Components workshop - Todo App
 
-## Oppsett
-
-Hvis du har Docker så kan du initialisere applikasjonen i en Web Container. Alternativt så kan du initialisere applikasjonen manuelt.
-
-### Manuelt
-
-1. `npm ci`
-2. `npm run db:generate`
-3. `npm run db:seed`
-
-### Med web container (Docker)
-
 ## Workshop beskrivelse
 
 Med React 19 innføres en av de mest spennende nyhetene i React på lang tid: React Server Components (RSCs).
@@ -23,6 +11,18 @@ Litt mindre kort fortalt kan RSCs selv hente data og rendres i sin helhet på se
 "Hva er så fordelene med dette? Hvordan skiller det seg fra måten vi skrev komponenter på tidligere? Hvorfor skal jeg bry meg?". Du stiller mange spørsmål.
 
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette. Vi kommer til å starte med en presentasjon på en liten halvtime før du selv skal få lov til å bygge en React-applikasjon som bruker React Server Components.
+
+## Oppsett
+
+Hvis du har Docker så kan du initialisere applikasjonen i en Web Container. Alternativt så kan du initialisere applikasjonen manuelt.
+
+### Manuelt
+
+1. `npm ci`
+2. `npm run db:generate`
+3. `npm run db:seed`
+
+### Med web container (Docker)
 
 ## Oppgaver
 
@@ -148,3 +148,15 @@ Her er noen krav for denne faturen:
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
+
+### Oppgave 4: Bedre UX med Suspense
+
+Ppå grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
+Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
+Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig behandlet (rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
+
+I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
+
+I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
+Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
+Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `src/components/todoList`.
