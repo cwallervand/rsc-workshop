@@ -4,7 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TODO NextJS",
+  title: "Tudlu",
   description: "",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
