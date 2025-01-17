@@ -13,7 +13,7 @@ export const ClientComponentWithButton = () => {
     <ClientComponent message="I am a ClientComponent, please click my button!">
       <div>
         <button className="client" onClick={() => setRenderServerComponent(true)}>
-          Click me!
+          Show ServerComponent!
         </button>
       </div>
       {renderServerComponent && <ServerComponent message="I am defined as a ServerComponent, but I am actually included in the JS bundle!" />}
