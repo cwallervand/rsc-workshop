@@ -153,10 +153,10 @@ Her er noen krav for denne faturen:
 
 Ppå grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
-Per nå så vises ingenting på landsingssiden før vi har fått alle TODO-ene fra serveren. Og siden dette tar tid så skaper det en veldig dårlig brukeropplevelse (som du skal få lov til å forbedre).
+Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig behandlet (rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
 
-I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er ferdig.
+I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
-I denne oppgaven skal du bruke Suspense til å forbedre brukeropplevelsen i TODO-appen.
+I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
 Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
-Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `todoList`.
+Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `src/components/todoList`.
