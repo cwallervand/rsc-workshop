@@ -11,7 +11,7 @@ const delay = (ms: number): Promise<void> => {
 }
 
 const getTodos = async (): Promise<Todo[]> => {
-  await delay(1000);
+  await delay(1500);
   return Promise.resolve([
     {
       id: 1,
