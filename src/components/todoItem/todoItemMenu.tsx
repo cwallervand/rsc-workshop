@@ -22,7 +22,6 @@ type TodoItemMenuProps = {
 };
 
 export const TodoItemMenu: FC<TodoItemMenuProps> = ({ todo }) => {
-  console.log("### TodoItemMenu ###");
 
   return (
     <DropdownMenu>
