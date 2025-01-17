@@ -4,8 +4,10 @@ import { type Todo } from "@prisma/client";
 
 import { db } from "~/server/db";
 
+const DELAY_CAUSED_BY_SOME_EVIL = 1500;
+
 export async function getTodos(): Promise<Todo[]> {
-  await delay(1000);
+  await delay(DELAY_CAUSED_BY_SOME_EVIL);
   const todos: Todo[] = await db.todo.findMany();
 
   return todos;
