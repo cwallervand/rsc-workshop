@@ -148,3 +148,15 @@ Her er noen krav for denne faturen:
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
+
+### Oppgave 4: Bedre UX med Suspense
+
+Ppå grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
+Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
+Per nå så vises ingenting på landsingssiden før vi har fått alle TODO-ene fra serveren. Og siden dette tar tid så skaper det en veldig dårlig brukeropplevelse (som du skal få lov til å forbedre).
+
+I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er ferdig.
+
+I denne oppgaven skal du bruke Suspense til å forbedre brukeropplevelsen i TODO-appen.
+Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
+Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `todoList`.
