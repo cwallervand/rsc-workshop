@@ -77,7 +77,7 @@ const todos: Todo[] = await db.todo.findMany();
 </details>
 <details>
   <summary>Hint 3</summary>
-  <p><code>'user server';</code></p>
+  <p><code>'use server';</code></p>
 </details>
 <details>
   <summary>Hint 4</summary>
