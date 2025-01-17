@@ -158,12 +158,12 @@ Her er noen krav for denne featuren:
   </p>
 </details>
 <details>
-  <summary>Hint 4: Hvordan bruke Server Functions til å gjøre en form submit</summary>
+  <summary>Hint 4: En ny måte å gjøre form submits på</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 5: En ny måte å hente status på form status</summary>
+  <summary>Hint 5: En ny måte å hente form status på</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
