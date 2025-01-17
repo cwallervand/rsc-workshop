@@ -96,7 +96,7 @@ Her er noen krav for denne faturen:
 
 - En TODO må ha en tittel
 - En TODO kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables
+- Mens det skrives til databasen så skal lagre-knappen disables.
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
 - [`zod`](https://zod.dev/) skal brukes for å validere dataene
 - Det skal legges til støtte for feilhåndtering, men feilhåndtering skal ikke håndteres i denne oppgaven
@@ -139,12 +139,12 @@ Her er noen krav for denne faturen:
   </p>
 </details>
 <details>
-  <summary>Hint 1</summary>
+  <summary>Hint 3: Hvordan bruke Server Functions til å gjøre en form submit</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 2</summary>
+  <summary>Hint 4: En ny måte å hente status på form status</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
