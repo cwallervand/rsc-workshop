@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "moduleDetection": "force",
     "composite": false,
     "declaration": true,
     "declarationMap": true,
@@ -10,14 +11,25 @@
     "noEmit": true,
     "inlineSources": false,
     "isolatedModules": true,
+    "checkJs": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "preserveWatchOutput": true,
     "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "target": "es2022",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    }
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
