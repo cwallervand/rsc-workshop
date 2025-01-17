@@ -67,6 +67,8 @@ import { type Todo } from "@prisma/client";
 const todos: Todo[] = await db.todo.findMany();
 ```
 
+Når en TODO er lagret så må man få oppdatert UIet. Med NextJS så kan man bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
+
 <details>
   <summary>Hint 1</summary>
   <p>Selve datahentingen gjøres i <code>TodosWidget</code></p>
