@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "configurations": [
+    {
+      "command": "npm run turbo run dev --filter=task-8",
+      "name": "Task 8",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ]
+}
