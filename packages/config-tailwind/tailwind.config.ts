@@ -19,6 +19,12 @@ const config: Omit<Config, "content"> = {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
+        "kantega-deep-purple": "#27003d",
+        "kantega-deep-purple-dark": "#150023",
+        "kantega-deep-purple-light": "#36015b",
+        "kantega-red": "#ee3a64",
+        "kantega-red-dark": "#d3335e",
+        "kantega-red-light": "#ff507e",
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
