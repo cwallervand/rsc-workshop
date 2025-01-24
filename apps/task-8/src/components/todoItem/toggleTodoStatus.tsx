@@ -1,12 +1,10 @@
 "use client";
 
-import { type FC, useOptimistic, useTransition } from "react";
 import { type Todo } from "@prisma/client";
-
-import { Button } from "~/components/ui/button";
-import { CheckBadge } from "~/components/icons/check-badge";
-
-import { setTodoDoneStatus } from "~/server/serverFunctions";
+import { type FC, useOptimistic, useTransition } from "react";
+import { setTodoDoneStatus } from "../../server/serverFunctions";
+import { CheckBadge } from "../icons/check-badge";
+import { Button } from "../ui/button";
 
 type ToggleTodoStatusProps = {
   todo: Todo;

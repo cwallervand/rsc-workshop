@@ -1,21 +1,18 @@
 "use client";
-import { type FC } from "react";
-import Link from "next/link";
 
 import { type Todo } from "@prisma/client";
-
+import Link from "next/link";
+import { type FC } from "react";
+import { deleteTodo, setTodoDoneStatus } from "../../server/serverFunctions";
+import { CheckBadge } from "../icons/check-badge";
+import { EllipsisHostizontal } from "../icons/ellipsis-horizontal";
+import { Trash } from "../icons/trash";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu";
-import { CheckBadge } from "~/components/icons/check-badge";
-import { Trash } from "~/components/icons/trash";
-
-import { EllipsisHostizontal } from "~/components/icons/ellipsis-horizontal";
-
-import { deleteTodo, setTodoDoneStatus } from "~/server/serverFunctions";
+} from "../ui/dropdown-menu";
 
 type TodoItemMenuProps = {
   todo: Todo;

@@ -61,7 +61,7 @@ Prisma er brukt som ORM og det finnes allerede en definert `Todo` type. Definisj
 TODO-er kan hentes fra databasen slik:
 
 ```ts
-import { db } from "~/server/db";
+import { db } from "src/server/db";
 import { type Todo } from "@prisma/client";
 
 const todos: Todo[] = await db.todo.findMany();

@@ -1,4 +1,4 @@
-import { db } from "~/server/db";
+import { db } from "../src/server/db";
 
 async function main() {
   const oppgave1 = {

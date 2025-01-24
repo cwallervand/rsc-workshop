@@ -1,7 +1,6 @@
-import { type FC } from "react";
 import { type Todo } from "@prisma/client";
-
-import { TodoItem } from "~/components/todoItem/todoItem";
+import { type FC } from "react";
+import { TodoItem } from "../todoItem/todoItem";
 
 export type TodoListProps = {
   todos: Todo[];

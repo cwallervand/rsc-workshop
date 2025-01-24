@@ -1,11 +1,9 @@
-import { type FC } from "react";
 import { type Todo } from "@prisma/client";
-
-import { Card, CardDescription, CardHeader } from "~/components/ui/card";
-
-import { TodoItemMenu } from "~/components/todoItem/todoItemMenu";
-import { ToggleTodoStatus } from "~/components/todoItem/toggleTodoStatus";
-import { TodoTitle } from "~/components/todoItem/todoTitle";
+import { type FC } from "react";
+import { TodoItemMenu } from "../todoItem/todoItemMenu";
+import { TodoTitle } from "../todoItem/todoTitle";
+import { ToggleTodoStatus } from "../todoItem/toggleTodoStatus";
+import { Card, CardDescription, CardHeader } from "../ui/card";
 
 type TodoItemProps = {
   todo: Todo;

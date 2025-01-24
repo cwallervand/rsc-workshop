@@ -1,10 +1,9 @@
 "use server";
 
-import { z } from "zod";
-import { revalidatePath } from "next/cache";
 import { type Todo } from "@prisma/client";
-
-import { db } from "~/server/db";
+import { revalidatePath } from "next/cache";
+import { z } from "zod";
+import { db } from "./db";
 
 const DELAY_CAUSED_BY_SOME_EVIL = 1500;
 

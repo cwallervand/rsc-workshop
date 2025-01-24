@@ -1,4 +1,4 @@
-import { addTodo } from "~/server/serverFunctions";
+import { addTodo } from "../server/serverFunctions";
 import { TodoInput } from "./todoInput/todoInput";
 
 type AddTodoFormProps = {

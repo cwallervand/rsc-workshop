@@ -1,4 +1,4 @@
-import { AddTodoSubmitButton } from "~/components/addTodoSubmitButton";
+import { AddTodoSubmitButton } from "../addTodoSubmitButton";
 
 export const TodoInput = () => {
   return (

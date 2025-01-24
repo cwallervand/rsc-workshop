@@ -1,4 +1,5 @@
-import { getTodo } from "~/server/serverFunctions";
+import { getTodo } from "../../server/serverFunctions";
+
 export default async function Page({
   params,
 }: {

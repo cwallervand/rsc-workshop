@@ -1,15 +1,13 @@
 "use client";
-import { type FC, useState, useOptimistic, useTransition } from "react";
+
 import { type Todo } from "@prisma/client";
-
-import { CardTitle } from "~/components/ui/card";
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
 import { Check } from "lucide-react";
-
-import { Pencil } from "~/components/icons/pencil";
-
-import { updateTodoTitle } from "~/server/serverFunctions";
+import { type FC, useOptimistic, useState, useTransition } from "react";
+import { updateTodoTitle } from "../../server/serverFunctions";
+import { Pencil } from "../icons/pencil";
+import { Button } from "../ui/button";
+import { CardTitle } from "../ui/card";
+import { Input } from "../ui/input";
 
 type TodoTitleProps = {
   todo: Todo;

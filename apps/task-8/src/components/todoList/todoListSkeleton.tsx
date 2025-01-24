@@ -1,13 +1,11 @@
 import { type FC } from "react";
-
-import { Skeleton } from "~/components/ui/skeleton";
-
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "~/components/ui/card";
+} from "../ui/card";
+import { Skeleton } from "../ui/skeleton";
 
 export const TodoListSkeleton: FC = () => {
   return (
