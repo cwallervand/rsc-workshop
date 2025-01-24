@@ -1,4 +1,4 @@
-# React Server Components workshop - Todo App
+# React Server Components workshop - Gjøremålsappen Tudlu
 
 ## Workshop beskrivelse
 
@@ -14,15 +14,15 @@ I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette
 
 ## Oppsett
 
-Hvis du har Docker så kan du initialisere applikasjonen i en Web Container. Alternativt så kan du initialisere applikasjonen manuelt.
+Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alternativt så kan du initialisere applikasjonen manuelt.
 
 ### Manuelt
 
-1. `npm ci`
+1. `npm i`
 2. `npm run db:generate`
 3. `npm run db:seed`
 
-### Med web container (Docker)
+### Med dev container (Docker)
 
 ## Oppgaver
 
@@ -34,7 +34,7 @@ git checkout task-1
 
 I denne oppgaven skal du utforske litt hvordan klient- og server-komponenter blir rendret og hvordan komposisjon kan gjøres.
 
-Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000). Anbefaler å bruke en Chrome-baseret nettleser for godt utviklerverktøy.
+Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000).
 
 Åpne filen [src/app/page.tsx](./src/app/page.tsx) og utforsk hvordan de forskjellige komponentene oppfører seg.
 Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./src/components/serverComponent.tsx).
@@ -61,7 +61,7 @@ Prisma er brukt som ORM og det finnes allerede en definert `Todo` type. Definisj
 TODO-er kan hentes fra databasen slik:
 
 ```ts
-import { db } from "~/server/db";
+import { db } from "src/server/db";
 import { type Todo } from "@prisma/client";
 
 const todos: Todo[] = await db.todo.findMany();
@@ -77,7 +77,7 @@ const todos: Todo[] = await db.todo.findMany();
 </details>
 <details>
   <summary>Hint 3</summary>
-  <p><code>'user server';</code></p>
+  <p><code>'use server';</code></p>
 </details>
 <details>
   <summary>Hint 4</summary>
@@ -92,11 +92,11 @@ git checkout task-3
 
 I denne oppgaven så skal det implementeres funksjonalitet for å opprette en ny TODO.
 
-Her er noen krav for denne faturen:
+Her er noen krav for denne featuren:
 
 - En TODO må ha en tittel
 - En TODO kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables
+- Mens det skrives til databasen så skal lagre-knappen disables.
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
 - [`zod`](https://zod.dev/) skal brukes for å validere dataene
 - Det skal legges til støtte for feilhåndtering, men feilhåndtering skal ikke håndteres i denne oppgaven
@@ -139,12 +139,29 @@ Her er noen krav for denne faturen:
   </p>
 </details>
 <details>
-  <summary>Hint 1</summary>
+  <summary>Hint 3: Hvordan oppdatere et enkelt felt på en TODO mot databasen</summary>
+  <p>
+    <pre>
+      <code>
+        db.todo.update({
+          where: {
+            id,
+          },
+          data: {
+            title,
+          },
+        });
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 4: Hvordan bruke Server Functions til å gjøre en form submit</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 2</summary>
+  <summary>Hint 5: En ny måte å hente status på form status</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
@@ -157,6 +174,30 @@ Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig b
 
 I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
-I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
-Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
-Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent for dette som du kan bruke i mappen `src/components/todoList`.
+Her er noen krav for denne featuren:
+
+- I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
+- Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
+- Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+
+### Oppgave 5: Endre status på en TODO + optimistisk UI
+
+I denne oppgaven skal du legge til en feature for å endre statusen på en TODO (gjort / ikke gjort).
+
+Her er noen krav for denne featuren:
+
+- Hver todo skal vise en indikasjon på status
+- Man skal lett kunne endre statusen på en TODO
+- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- Ved oppdateringsfeil skal UIet vise den faktiske statusen på TODO-en.
+
+### Oppgave 6: Endre tittel på en TODO + optimistisk UI
+
+I denne oppgaven skal du legge til en feature for å endre tittelen på en TODO.
+
+Her er noen krav for denne featuren:
+
+- Det skal være to moduser for tittelen på en TODO: visningsmodus og redigeringsmodus.
+- Når man lagrer tittelen så skal man med en gang gå til visningsmodus og den nye tittelen skal vises (selv om man ikke har fått svar fra serveren).
+- UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- Ved oppdateringsfeil skal UIet vise den faktiske tittelen på TODO-en.
