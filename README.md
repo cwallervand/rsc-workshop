@@ -56,13 +56,13 @@ Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk vid
 git checkout task-2
 ```
 
-Fra og med denne opgpaven så skal det videreutvikles en TODO app. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig TODO-app da den bare lister ut noen TODO-er uten at man kan gjøre noe med de.
+Fra og med denne opgpaven så skal det gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
 Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å være en server komponent.
 
-Det er allerede satt opp en database (SQLite) som er populert med noen TODO-er.
+Det er allerede satt opp en database (SQLite) som er populert med noen gjøremål.
 Prisma er brukt som ORM og det finnes allerede en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
 
-TODO-er kan hentes fra databasen slik:
+Gjøremål kan hentes fra databasen slik:
 
 ```ts
 import { db } from "~/server/db";
@@ -71,7 +71,7 @@ import { type Todo } from "@prisma/client";
 const todos: Todo[] = await db.todo.findMany();
 ```
 
-Når en TODO er lagret så må man få oppdatert UIet. Med NextJS så kan man bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
+Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
 <details>
   <summary>Hint 1</summary>
@@ -90,18 +90,18 @@ Når en TODO er lagret så må man få oppdatert UIet. Med NextJS så kan man br
   <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
 </details>
 
-### Oppgave 3: Opprette en ny TODO
+### Oppgave 3: Opprette et nytt gjøremål
 
 ```
 git checkout task-3
 ```
 
-I denne oppgaven så skal det implementeres funksjonalitet for å opprette en ny TODO.
+I denne oppgaven så skal det implementeres funksjonalitet for å opprette et nytt gjøremål.
 
 Her er noen krav for denne featuren:
 
-- En TODO må ha en tittel
-- En TODO kan ha en beskrivelse
+- Et gjøremål må ha en tittel
+- Et gjøremål kan ha en beskrivelse
 - Mens det skrives til databasen så skal lagre-knappen disables.
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
 - [`zod`](https://zod.dev/) skal brukes for å validere dataene
@@ -123,7 +123,7 @@ Her er noen krav for denne featuren:
   </p>
 </details>
 <details>
-  <summary>Hint 2: Hvordan bruke <code>zod</code> for å validere FormData</summary>
+  <summary>Hint 2: Hvordan bruke zod for å validere FormData</summary>
   <p>
     <pre>
       <code>
@@ -145,7 +145,7 @@ Her er noen krav for denne featuren:
   </p>
 </details>
 <details>
-  <summary>Hint 3: Hvordan oppdatere et enkelt felt på en TODO mot databasen</summary>
+  <summary>Hint 3: Hvordan oppdatere et enkelt felt på en <code>todo</code> mot databasen</summary>
   <p>
     <pre>
       <code>
@@ -174,44 +174,44 @@ Her er noen krav for denne featuren:
 
 ### Oppgave 4: Bedre UX med Suspense
 
-På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med TODO-er fra serveren.
+På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
-Per nå så får vi ingenting tilbake fra serveren før alle TODO-er er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
+Per nå så får vi ingenting tilbake fra serveren før alle gjøremål er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
 
 I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
-I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i TODO-appen.
+I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i Tudlu.
 
 Her er noen krav for denne featuren:
 
-- Skjemaet for å registrere en ny TODO skal vises selv om man venter på svar for å hente alle TODO-ene.
-- Mens man venter på å få TODO-ene så skal det vises en liste med TODO-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+- Skjemaet for å registrere en nt nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
+- Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
 
-### Oppgave 5: Endre status på en TODO + optimistisk UI
+### Oppgave 5: Endre status på et gjøremål + optimistisk UI
 
-I denne oppgaven skal du legge til en feature for å endre statusen på en TODO (gjort / ikke gjort).
+I denne oppgaven skal du legge til en feature for å endre statusen på et gjøremål (gjort / ikke gjort).
 
 Her er noen krav for denne featuren:
 
-- Hver TODO i listen skal vise en indikasjon på status
-- Man skal lett kunne endre statusen på en TODO
+- Hvert gjøremål i listen skal vise en indikasjon på status
+- Man skal lett kunne endre statusen på et gjøremål
 - UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
-- Ved oppdateringsfeil skal UIet vise den faktiske statusen på TODO-en.
+- Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
 
 <details>
   <summary>Hint 1: Hvordan sette optimistisk status og lagre til databasen</summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
 </details>
 
-### Oppgave 6: Endre tittel på en TODO + optimistisk UI
+### Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
 
-I denne oppgaven skal du legge til en feature for å endre tittelen på en TODO.
+I denne oppgaven skal du legge til en feature for å endre tittelen på et gjøremål.
 
 Her er noen krav for denne featuren:
 
-- Det skal være to moduser for tittelen på en TODO: visningsmodus og redigeringsmodus.
+- Det skal være to moduser for tittelen på et gjøremål: visningsmodus og redigeringsmodus.
 - UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
-- Ved oppdateringsfeil skal UIet vise den faktiske tittelen på TODO-en.
+- Ved oppdateringsfeil skal UIet vise den faktiske tittelen på gjøremålet.
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
 <details>
