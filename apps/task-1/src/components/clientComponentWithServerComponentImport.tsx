@@ -1,7 +1,7 @@
 "use client";
 
-import { ClientComponent } from "~/components/clientComponent";
-import { ServerComponent } from "~/components/serverComponent";
+import { ClientComponent } from "./clientComponent";
+import { ServerComponent } from "./serverComponent";
 
 export const ClientComponentWithServerComponentImport = () => {
   console.log("### ClientComponentWithServerComponentImport ###");

@@ -1,6 +1,6 @@
 "use client";
 
-import { useComponentTypeClass } from "~/components/utils/useComponentTypeClass";
+import { useComponentTypeClass } from "./utils/useComponentTypeClass";
 
 type ClientComponentProps = {
   message?: string;

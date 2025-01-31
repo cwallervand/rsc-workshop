@@ -2,7 +2,7 @@
 import { type ReactNode } from "react";
 
 
-import { ClientComponent } from "~/components/clientComponent";
+import { ClientComponent } from "./clientComponent";
 
 type ClientComponentWithSlotProps = {
   slot: ReactNode

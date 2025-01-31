@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 
-import { ServerComponent } from "~/components/serverComponent";
+import { ServerComponent } from "./serverComponent";
 
-import { ClientComponent } from "~/components/clientComponent";
+import { ClientComponent } from "./clientComponent";
 
 
 export const ClientComponentWithButton = () => {

@@ -1,4 +1,4 @@
-import { getComponentTypeClass } from "~/components/utils/componentTypeUtils";
+import { getComponentTypeClass } from "./utils/componentTypeUtils";
 
 type ServerComponentProps = {
   message?: string;
