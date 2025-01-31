@@ -9,7 +9,8 @@
 		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
 		"task-1": "turbo dev --filter=task-1",
 		"task-2": "turbo dev --filter=task-2",
-		"task-3": "turbo dev --filter=task-3"
+		"task-3": "turbo dev --filter=task-3",
+		"task-4": "turbo dev --filter=task-4"
 	},
 	"devDependencies": {
 		"@types/eslint": "^8.56.10",

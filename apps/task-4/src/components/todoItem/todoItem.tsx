@@ -1,7 +1,7 @@
 import { type FC } from "react";
 import { type Todo } from "@prisma/client";
 
-import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@repo/ui/card";
 
 type TodoItemProps = {
   todo: Todo;

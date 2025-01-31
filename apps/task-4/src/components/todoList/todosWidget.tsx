@@ -1,8 +1,8 @@
 import { getTodos } from "~/server/serverFunctions";
 
-import { CheckBadge } from "~/components/icons/check-badge";
-import { Card, CardTitle } from "~/components/ui/card";
-import { TodoList } from "~/components/todoList/todoList";
+import { CheckBadge } from "@repo/ui/icons";
+import { Card, CardTitle } from "@repo/ui/card";
+import { TodoList } from "./todoList";
 
 export const TodosWidget = async () => {
   const todos = await getTodos();
