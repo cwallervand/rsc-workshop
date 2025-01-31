@@ -2,7 +2,43 @@
   "version": "0.1.0",
   "configurations": [
     {
-      "command": "npm run turbo run dev --filter=task-8",
+      "command": "npm run task-1",
+      "name": "Task 1",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-2",
+      "name": "Task 2",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-3",
+      "name": "Task 3",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-4",
+      "name": "Task 4",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-5",
+      "name": "Task 5",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-6",
+      "name": "Task 6",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "npm run task-8",
       "name": "Task 8",
       "request": "launch",
       "type": "node-terminal"
