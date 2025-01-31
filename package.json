@@ -12,8 +12,9 @@
 		"task-3": "turbo dev --filter=task-3",
 		"task-4": "turbo dev --filter=task-4",
 		"task-5": "turbo dev --filter=task-5",
-    "task-8": "turbo dev --filter=task-8",
-    "turbo": "turbo"
+		"reference-implementation": "turbo dev --filter=reference-implementation",
+		"task-8": "turbo dev --filter=task-8",
+		"turbo": "turbo"
 	},
 	"devDependencies": {
 		"@types/eslint": "^8.56.10",
