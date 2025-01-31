@@ -4,10 +4,7 @@
   "postCreateCommand": "npm i",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "bradlc.vscode-tailwindcss",
-        "esbenp.prettier-vscode"
-      ]
+      "extensions": ["bradlc.vscode-tailwindcss", "esbenp.prettier-vscode"]
     }
   }
 }
