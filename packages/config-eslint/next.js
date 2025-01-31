@@ -44,8 +44,6 @@ module.exports = {
   rules: {
     "import/no-default-export": "off",
     "no-console": "warn",
-    "@typescript-eslint/consistent-type-definitions": {
-      definition: "type",
-    },
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
   },
 };

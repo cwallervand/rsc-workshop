@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { type Todo } from "@prisma/client";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ import { TodoList } from "~/components/todoList/todoList";
 
 const delay = (ms: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, ms));
-}
+};
 
 const getTodos = async (): Promise<Todo[]> => {
   await delay(1500);
@@ -25,17 +25,15 @@ const getTodos = async (): Promise<Todo[]> => {
   ]);
 };
 
-
 export const TodosWidget = () => {
-  console.log('### TodosWidget ###');
+  console.log("### TodosWidget ###");
   const [todos, setTodos] = useState<Todo[] | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getTodos()
+      const data = await getTodos();
       setTodos(data);
-
-    }
+    };
     void fetchData();
   }, []);
 
@@ -48,9 +46,8 @@ export const TodosWidget = () => {
           </CardTitle>
         </Card>
       );
-    }
-    else {
-      return <TodoList todos={todos} />
+    } else {
+      return <TodoList todos={todos} />;
     }
   } else {
     return null;

@@ -1,12 +1,7 @@
 import { type FC } from "react";
 
 import { Skeleton } from "@repo/ui/skeleton";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@repo/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle } from "@repo/ui/card";
 
 export const TodoListSkeleton: FC = () => {
   return (

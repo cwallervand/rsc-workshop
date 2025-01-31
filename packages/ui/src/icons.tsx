@@ -64,6 +64,4 @@ const Trash: FC<TrashProps> = ({ className }) => (
   </svg>
 );
 
-
-export { CheckBadge, Pencil, Trash }
-
+export { CheckBadge, Pencil, Trash };

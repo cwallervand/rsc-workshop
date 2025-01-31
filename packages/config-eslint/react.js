@@ -37,9 +37,7 @@ module.exports = {
   // add rules configurations here
   rules: {
     "import/no-default-export": "off",
-    "@typescript-eslint/consistent-type-definitions": {
-      definition: "type",
-    },
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     "no-console": "warn",
 
   },
@@ -49,6 +47,7 @@ module.exports = {
       env: {
         node: true,
       },
+
     },
   ],
 };

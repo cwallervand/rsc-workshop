@@ -6,8 +6,6 @@ type AddTodoFormProps = {
 };
 
 export const AddTodoForm = ({ className }: AddTodoFormProps) => {
-
-
   return (
     <form action={addTodo} className={className}>
       <TodoFormInput></TodoFormInput>

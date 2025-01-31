@@ -6,8 +6,10 @@ import { TodoListSkeleton } from "../components/todoList/todoListSkeleton";
 export default function HomePage() {
   return (
     <>
-      <header className="bg-gradient-to-r from-kantega-deep-purple to-kantega-deep-purple-light text-white py-20">
-        <h1 className="text-9xl font-bold font-bolder text-center m-0">Tudlu</h1>
+      <header className="bg-gradient-to-r from-kantega-deep-purple to-kantega-deep-purple-light py-20 text-white">
+        <h1 className="font-bolder m-0 text-center text-9xl font-bold">
+          Tudlu
+        </h1>
       </header>
 
       <main className="container mx-auto px-4">

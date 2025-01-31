@@ -5,11 +5,12 @@ import { useComponentTypeClass } from "./utils/useComponentTypeClass";
 type ClientComponentProps = {
   message?: string;
   children?: React.ReactNode;
-}
+};
 
-export const ClientComponent = (
-  { message = "Hello ClientComponent!", children }: ClientComponentProps
-) => {
+export const ClientComponent = ({
+  message = "Hello ClientComponent!",
+  children,
+}: ClientComponentProps) => {
   console.log(`### ClientComponent: ${message} ###`);
   const componentTypeClass = useComponentTypeClass();
   return (

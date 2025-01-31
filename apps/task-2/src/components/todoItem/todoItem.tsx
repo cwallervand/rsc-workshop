@@ -9,7 +9,7 @@ type TodoItemProps = {
 export const TodoItem: FC<TodoItemProps> = ({ todo }) => {
   return (
     <Card className="flex flex-row justify-between">
-      <CardHeader className="p-4 gap-2">
+      <CardHeader className="gap-2 p-4">
         <CardTitle>{todo.title}</CardTitle>
         <CardDescription>{todo.description}</CardDescription>
       </CardHeader>
