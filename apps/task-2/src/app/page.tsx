@@ -1,4 +1,4 @@
-import { TodosWidget } from "~/components/todoList/todosWidget";
+import { TodosWidget } from "../components/todoList/todosWidget";
 
 export default function HomePage() {
   console.log("### HomePage ###");

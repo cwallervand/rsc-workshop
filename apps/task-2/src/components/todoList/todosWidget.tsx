@@ -2,9 +2,11 @@
 import { type Todo } from "@prisma/client";
 import { useEffect, useState } from "react";
 
-import { CheckBadge } from "~/components/icons/check-badge";
-import { Card, CardTitle } from "~/components/ui/card";
-import { TodoList } from "~/components/todoList/todoList";
+import { CheckBadge } from "@repo/ui/icons/check-badge";
+// import { Card, CardTitle } from "~/components/ui/card";
+import { Card, CardTitle } from "@repo/ui/card";
+
+import { TodoList } from "../todoList/todoList";
 
 const delay = (ms: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, ms));
