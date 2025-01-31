@@ -1,33 +1,32 @@
 {
-	"private": true,
-	"scripts": {
-		"build": "turbo build",
-		"dev": "turbo dev",
-		"lint": "turbo lint",
-		"type-check": "turbo type-check",
-		"clean": "turbo clean",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"task-1": "turbo dev --filter=task-1",
-		"task-2": "turbo dev --filter=task-2",
-		"task-3": "turbo dev --filter=task-3",
-		"task-4": "turbo dev --filter=task-4",
-		"task-5": "turbo dev --filter=task-5",
-    "task-8": "turbo dev --filter=task-8",
-    "turbo": "turbo"
-	},
-	"devDependencies": {
-		"@types/eslint": "^8.56.10",
-		"prettier": "^3.2.5",
-		"prettier-plugin-tailwindcss": "^0.5.11",
-		"turbo": "^2.3.3"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"name": "kantodo",
-	"packageManager": "npm@10.7.0",
-	"workspaces": [
-		"apps/*",
-		"packages/*"
-	]
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "type-check": "turbo type-check",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "task-1": "turbo dev --filter=task-1",
+    "task-2": "turbo dev --filter=task-2",
+    "task-3": "turbo dev --filter=task-3",
+    "task-4": "turbo dev --filter=task-4",
+    "task-5": "turbo dev --filter=task-5",
+    "task-8": "turbo dev --filter=task-8"
+  },
+  "devDependencies": {
+    "@types/eslint": "^8.56.10",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "turbo": "^2.3.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "name": "kantodo",
+  "packageManager": "npm@10.7.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
 }
