@@ -14,7 +14,9 @@
 		"./card": "./src/card.tsx",
 		"./icons": "./src/icons.tsx",
 		"./input": "./src/input.tsx",
-		"./textarea": "./src/textarea.tsx"
+		"./textarea": "./src/textarea.tsx",
+		"./button": "./src/button.tsx",
+		"./skeleton": "./src/skeleton.tsx"
 	},
 	"license": "MIT",
 	"scripts": {
