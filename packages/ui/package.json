@@ -8,15 +8,14 @@
 		"dist"
 	],
 	"exports": {
-		"./styles.css": "./dist/index.css",
-		"./todo-form-input": "./src/todo-form-input.tsx",
-		"./todo-form-submit": "./src/todo-form-submit.tsx",
 		"./card": "./src/card.tsx",
 		"./icons": "./src/icons.tsx",
 		"./input": "./src/input.tsx",
+		"./skeleton": "./src/skeleton.tsx",
+		"./styles.css": "./dist/index.css",
 		"./textarea": "./src/textarea.tsx",
-		"./button": "./src/button.tsx",
-		"./skeleton": "./src/skeleton.tsx"
+		"./todo-form-input": "./src/todo-form-input.tsx",
+		"./todo-form-submit": "./src/todo-form-submit.tsx"
 	},
 	"license": "MIT",
 	"scripts": {

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getComponentTypeClass } from "./componentTypeUtils";
+import { getComponentTypeClass } from "./component-type-utils";
 
-export const useComponentTypeClass = () => {
+export function useComponentTypeClass(): string {
   const [componentTypeClass, setComponentTypeClass] = useState<string>("");
 
   useEffect(() => {
@@ -11,4 +11,4 @@ export const useComponentTypeClass = () => {
   }, []);
 
   return componentTypeClass;
-};
+}

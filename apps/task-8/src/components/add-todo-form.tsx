@@ -1,14 +1,16 @@
-import { addTodo } from "../server/serverFunctions";
 import { TodoFormInput } from "@repo/ui/todo-form-input";
+import { addTodo } from "../server/serverFunctions";
 
 type AddTodoFormProps = {
   className?: string;
 };
 
-export const AddTodoForm = ({ className }: AddTodoFormProps) => {
+export function AddTodoForm({
+  className,
+}: AddTodoFormProps): JSX.Element {
   return (
     <form action={addTodo} className={className}>
-      <TodoFormInput></TodoFormInput>
+      <TodoFormInput />
     </form>
   );
-};
+}

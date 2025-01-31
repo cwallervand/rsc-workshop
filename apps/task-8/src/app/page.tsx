@@ -1,12 +1,12 @@
 import { Suspense } from "react";
-import { AddTodoForm } from "../components/addTodoForm";
+import { AddTodoForm } from "../components/add-todo-form";
 import { TodosWidget } from "../components/todoList/todosWidget";
 import { TodoListSkeleton } from "../components/todoList/todoListSkeleton";
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
   return (
     <>
-      <header className="bg-gradient-to-r from-kantega-deep-purple to-kantega-deep-purple-light py-20 text-white">
+      <header className="from-ui-kantega-deep-purple to-ui-kantega-deep-purple-light bg-gradient-to-r py-20 text-white">
         <h1 className="font-bolder m-0 text-center text-9xl font-bold">
           Tudlu
         </h1>
