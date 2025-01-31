@@ -4,7 +4,7 @@ type CheckBadgeProps = {
   className?: string;
 };
 
-export const CheckBadge: FC<CheckBadgeProps> = ({ className }) => (
+const CheckBadge: FC<CheckBadgeProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -20,3 +20,6 @@ export const CheckBadge: FC<CheckBadgeProps> = ({ className }) => (
     />
   </svg>
 );
+
+export { CheckBadge }
+

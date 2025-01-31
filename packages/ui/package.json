@@ -12,7 +12,7 @@
 		"./todo-form-input": "./src/todo-form-input.tsx",
 		"./todo-form-submit": "./src/todo-form-submit.tsx",
 		"./card": "./src/card.tsx",
-		"./icons/check-badge": "./src/icons/check-badge.tsx"
+		"./icons": "./src/icons.tsx"
 	},
 	"license": "MIT",
 	"scripts": {
