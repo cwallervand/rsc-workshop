@@ -12,7 +12,9 @@
 		"./todo-form-input": "./src/todo-form-input.tsx",
 		"./todo-form-submit": "./src/todo-form-submit.tsx",
 		"./card": "./src/card.tsx",
-		"./icons": "./src/icons.tsx"
+		"./icons": "./src/icons.tsx",
+		"./input": "./src/input.tsx",
+		"./textarea": "./src/textarea.tsx"
 	},
 	"license": "MIT",
 	"scripts": {
