@@ -1,4 +1,4 @@
-import "~/styles/globals.css";
+import "@repo/ui/styles.css";
 
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";

@@ -1,5 +1,5 @@
 import { addTodo } from "~/server/serverFunctions";
-import { TodoInput } from "./todoInput/todoInput";
+import { TodoInput } from "~/components/todoInput/todoInput";
 
 type AddTodoFormProps = {
   className?: string;
