@@ -36,4 +36,5 @@ yarn-error.log*
 dist/
 
 # prisma
-prisma/migrations
+db.sqlite
+migrations/
