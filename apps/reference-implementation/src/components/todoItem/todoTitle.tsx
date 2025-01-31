@@ -9,7 +9,6 @@ import { Pencil } from "@repo/ui/icons";
 
 import { Check } from "lucide-react";
 
-
 import { updateTodoTitle } from "~/server/serverFunctions";
 
 type TodoTitleProps = {

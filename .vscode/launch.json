@@ -42,6 +42,12 @@
       "name": "Task 8",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "command": "npm run reference-implementation",
+      "name": "Reference implementation",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }
