@@ -6,7 +6,6 @@ import { ClientComponentWithButton } from "~/components/clientComponentWithButto
 import { ClientComponentWithServerComponentImport } from "~/components/clientComponentWithServerComponentImport";
 
 export default function HomePage() {
-  console.log("### HomePage ###");
   return (
     <main>
       <section>
