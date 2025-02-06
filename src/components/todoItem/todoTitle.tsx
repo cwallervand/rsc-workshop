@@ -39,8 +39,13 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
     setIsEditTitleMode(false);
 
     startTransition(async () => {
-      updateOptimisticTodoTitle(newTitle);
-      await updateTodoTitle(todo.id, newTitle);
+      try {
+        updateOptimisticTodoTitle(newTitle);
+        await updateTodoTitle(todo.id, newTitle);
+      } catch {
+        updateOptimisticTodoTitle(todo.title);
+      }
+
     });
   };
 

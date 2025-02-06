@@ -69,6 +69,7 @@ export async function setTodoDoneStatus(id: number, done: boolean) {
 }
 
 export async function updateTodoTitle(id: number, title: string) {
+  await delay(DELAY_CAUSED_BY_SOME_EVIL);
   await db.todo.update({
     where: {
       id,
