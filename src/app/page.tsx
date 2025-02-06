@@ -2,7 +2,6 @@ import { AddTodoForm } from "~/components/addTodoForm";
 import { TodosWidget } from "~/components/todoList/todosWidget";
 
 export default function HomePage() {
-  console.log("### HomePage ###");
   return (
     <>
       <header className="bg-gradient-to-r from-teal-300 to-indigo-600 text-white py-20">

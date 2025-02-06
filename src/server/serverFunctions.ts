@@ -43,51 +43,6 @@ export async function getTodos(): Promise<Todo[]> {
   return todos;
 }
 
-export async function getTodo(id: number): Promise<Todo> {
-  const todo: Todo | null = await db.todo.findUnique({
-    where: { id },
-  });
-
-  if (!todo) {
-    throw new Error(`Todo with ID ${id} not found`);
-  }
-
-  return todo;
-}
-
-export async function setTodoDoneStatus(id: number, done: boolean) {
-  await db.todo.update({
-    where: {
-      id,
-    },
-    data: {
-      done,
-    },
-  });
-  revalidatePath("/");
-}
-
-export async function updateTodoTitle(id: number, title: string) {
-  await db.todo.update({
-    where: {
-      id,
-    },
-    data: {
-      title,
-    },
-  });
-  revalidatePath("/");
-}
-
-export async function deleteTodo(id: number) {
-  await db.todo.delete({
-    where: {
-      id,
-    },
-  });
-  revalidatePath("/");
-}
-
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
