@@ -85,9 +85,9 @@
 }
 
 .server {
-  @apply border-rose-500 text-rose-500;
+  @apply border-orange-600 text-orange-600;
 }
 
 .client {
-  @apply border-emerald-500 text-emerald-500;
+  @apply border-blue-500 text-blue-500;
 }
