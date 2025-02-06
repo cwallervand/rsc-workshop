@@ -78,16 +78,3 @@
     font-family: "Gochi Hand", sans-serif;
   }
 }
-
-.server,
-.client {
-  @apply mb-4 border-2 p-4 text-xl;
-}
-
-.server {
-  @apply border-rose-500 text-rose-500;
-}
-
-.client {
-  @apply border-emerald-500 text-emerald-500;
-}
