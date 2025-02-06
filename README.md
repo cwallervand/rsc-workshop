@@ -12,7 +12,7 @@ Den produserte HTMLen fra komponenten blir så sendt til klienten hvor den flett
 "Hva er så fordelene med dette? Hvordan skiller det seg fra måten vi skrev komponenter på tidligere? Hvorfor skal jeg bry meg?". Du stiller mange spørsmål.
 
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette.
-Vi vil bidra med litt faglig input gjennom workshopen og du skal få lov til å utvikle applikasjonen Tudlu; en RSC drevet gjøremålsapp!
+Vi vil bidra med litt faglig input gjennom workshopen og du skal få lov til å utvikle applikasjonen Tudlu; en RSC-drevet gjøremålsapp!
 
 Denne workshopen passer best for deg som allerede har litt erfaring med React.
 
@@ -24,7 +24,6 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 
 1. `npm i`
 2. `npm run db:generate`
-3. `npm run db:seed`
 
 ### Med dev container (Docker)
 

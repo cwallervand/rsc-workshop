@@ -25,8 +25,12 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
 
   const handleToggleTodoStatus = () => {
     startTransition(async () => {
-      toggleOptimisticTodoStatus(!optimisticTodo.done);
-      await setTodoDoneStatus(todo.id, !optimisticTodo.done);
+      try {
+        toggleOptimisticTodoStatus(!optimisticTodo.done);
+        await setTodoDoneStatus(todo.id, !optimisticTodo.done);
+      } catch {
+        toggleOptimisticTodoStatus(todo.done)
+      }
     });
   };
 

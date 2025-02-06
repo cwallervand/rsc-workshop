@@ -56,6 +56,7 @@ export async function getTodo(id: number): Promise<Todo> {
 }
 
 export async function setTodoDoneStatus(id: number, done: boolean) {
+  await delay(DELAY_CAUSED_BY_SOME_EVIL);
   await db.todo.update({
     where: {
       id,
