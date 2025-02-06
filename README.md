@@ -101,6 +101,7 @@ Her er noen krav for denne featuren:
 - Et gjøremål kan ha en beskrivelse
 - Mens det skrives til databasen så skal lagre-knappen disables.
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
+- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren
 - [`zod`](https://zod.dev/) skal brukes for å validere dataene
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
