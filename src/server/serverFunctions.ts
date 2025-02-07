@@ -56,28 +56,6 @@ export async function setTodoDoneStatus(id: number, done: boolean) {
   revalidatePath("/");
 }
 
-export async function updateTodoTitle(id: number, title: string) {
-  await delay(DELAY_CAUSED_BY_SOME_EVIL);
-  await db.todo.update({
-    where: {
-      id,
-    },
-    data: {
-      title,
-    },
-  });
-  revalidatePath("/");
-}
-
-export async function deleteTodo(id: number) {
-  await db.todo.delete({
-    where: {
-      id,
-    },
-  });
-  revalidatePath("/");
-}
-
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
