@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { cn } from "./utils";
 
 const Card = React.forwardRef<
@@ -7,11 +6,11 @@ const Card = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn(
       "rounded-lg border bg-card text-card-foreground shadow-sm",
       className,
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -22,8 +21,8 @@ const CardHeader = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("flex flex-col space-y-1.5 p-6", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -34,11 +33,11 @@ const CardTitle = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn(
       "text-2xl font-semibold leading-none tracking-tight",
       className,
     )}
+    ref={ref}
     {...props}
   />
 ));
@@ -49,8 +48,8 @@ const CardDescription = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("text-sm text-muted-foreground", className)}
+    ref={ref}
     {...props}
   />
 ));
@@ -60,7 +59,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div className={cn("p-6 pt-0", className)} ref={ref} {...props} />
 ));
 CardContent.displayName = "CardContent";
 
@@ -69,49 +68,14 @@ const CardFooter = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    ref={ref}
     className={cn("flex items-center p-6 pt-0", className)}
+    ref={ref}
     {...props}
   />
 ));
 CardFooter.displayName = "CardFooter";
 
 export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
+  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle
 };
 
-// import { type ReactNode } from "react";
-
-// export function Card({
-//   title,
-//   children,
-//   href,
-// }: {
-//   title: string;
-//   children: ReactNode;
-//   href: string;
-// }): JSX.Element {
-//   return (
-//     <a
-//       className="ui-group ui-rounded-lg ui-border ui-border-transparent ui-px-5 ui-py-4 ui-transition-colors hover:ui-border-neutral-700 hover:ui-bg-neutral-800/30"
-//       href={`${href}?utm_source=create-turbo&utm_medium=with-tailwind&utm_campaign=create-turbo"`}
-//       rel="noopener noreferrer"
-//       target="_blank"
-//     >
-//       <h2 className="ui-mb-3 ui-text-2xl ui-font-semibold">
-//         {title}{" "}
-//         <span className="ui-inline-block ui-transition-transform group-hover:ui-translate-x-1 motion-reduce:ui-transform-none">
-//           -&gt;
-//         </span>
-//       </h2>
-//       <p className="ui-m-0 ui-max-w-[30ch] ui-text-sm ui-opacity-50">
-//         {children}
-//       </p>
-//     </a>
-//   );
-// }

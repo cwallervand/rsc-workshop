@@ -1,20 +1,18 @@
-import { type FC } from "react";
 import { type Todo } from "@prisma/client";
-
-import { TodoItem } from "~/components/todoItem/todoItem";
+import { TodoItem } from "@repo/ui/todo-item";
 
 export type TodoListProps = {
   todos: Todo[];
 };
 
-export const TodoList: FC<TodoListProps> = ({ todos }) => {
+export function TodoList({ todos }: TodoListProps): JSX.Element {
   return (
     <ul className="todo-list">
       {todos.map((todo) => (
-        <li key={todo.id} className="mb-2">
+        <li className="mb-2" key={todo.id}>
           <TodoItem todo={todo} />
         </li>
       ))}
     </ul>
   );
-};
+}

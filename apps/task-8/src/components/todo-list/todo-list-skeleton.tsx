@@ -1,12 +1,12 @@
-import { type FC } from "react";
-import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Skeleton } from "../ui/skeleton";
+import { Card, CardDescription, CardHeader, CardTitle } from "@repo/ui/card";
+import { Skeleton } from "@repo/ui/skeleton";
 
-export const TodoListSkeleton: FC = () => {
+export function TodoListSkeleton(): JSX.Element {
   return (
     <ul>
       {Array.from({ length: 3 }).map((_, index) => (
-        <li key={`todoSkeleton-${index}`} className="mb-2">
+        // eslint-disable-next-line react/no-array-index-key -- Using index as key because items are static and will not change
+        <li className="mb-2" key={`todoSkeleton-${index}`}>
           <Card>
             <CardHeader className="p-4">
               <CardTitle>
@@ -21,4 +21,4 @@ export const TodoListSkeleton: FC = () => {
       ))}
     </ul>
   );
-};
+}

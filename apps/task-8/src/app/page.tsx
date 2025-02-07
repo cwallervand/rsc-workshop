@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { AddTodoForm } from "../components/add-todo-form";
-import { TodosWidget } from "../components/todoList/todosWidget";
-import { TodoListSkeleton } from "../components/todoList/todoListSkeleton";
+import { TodosWidget } from "../components/todo-list/todos-widget";
+import { TodoListSkeleton } from "../components/todo-list/todo-list-skeleton";
 
 export default function HomePage(): JSX.Element {
   return (

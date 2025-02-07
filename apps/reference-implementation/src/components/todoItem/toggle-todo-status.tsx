@@ -1,18 +1,15 @@
 "use client";
 
-import { type FC, useOptimistic, useTransition } from "react";
 import { type Todo } from "@prisma/client";
-
-import { Button } from "@repo/ui/button";
 import { CheckBadge } from "@repo/ui/icons";
-
-import { setTodoDoneStatus } from "~/server/serverFunctions";
+import { useOptimistic, useTransition } from "react";
+import { setTodoDoneStatus } from "~/server/server-functions";
 
 type ToggleTodoStatusProps = {
   todo: Todo;
 };
 
-export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
+export function ToggleTodoStatus({ todo }: ToggleTodoStatusProps): JSX.Element {
   const [isPending, startTransition] = useTransition();
 
   const [optimisticTodo, toggleOptimisticTodoStatus] = useOptimistic(
@@ -31,16 +28,14 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
   };
 
   return (
-    <Button
-      variant="ghost"
-      type="submit"
-      size="icon"
+    <button
       className="border-0 [&_svg]:size-8"
       onClick={handleToggleTodoStatus}
+      type="submit"
     >
       <CheckBadge
         className={`${optimisticTodo.done ? "text-green-700" : "text-red-700"}`}
       />
-    </Button>
+    </button>
   );
-};
+}

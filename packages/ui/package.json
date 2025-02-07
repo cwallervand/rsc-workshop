@@ -8,12 +8,15 @@
 		"dist"
 	],
 	"exports": {
+		"./styles.css": "./dist/index.css",
 		"./card": "./src/card.tsx",
 		"./icons": "./src/icons.tsx",
 		"./input": "./src/input.tsx",
 		"./skeleton": "./src/skeleton.tsx",
-		"./styles.css": "./dist/index.css",
 		"./textarea": "./src/textarea.tsx",
+		"./todo-item": "./src/todo-item.tsx",
+		"./todo-item-menu": "./src/todo-item-menu.tsx",
+		"./todo-item-title": "./src/todo-item-title.tsx",
 		"./todo-form-input": "./src/todo-form-input.tsx",
 		"./todo-form-submit": "./src/todo-form-submit.tsx"
 	},
@@ -25,7 +28,7 @@
 		"type-check": "tsc --noEmit"
 	},
 	"peerDependencies": {
-		"react": "^18.2.0"
+		"react": "^18.3.1"
 	},
 	"devDependencies": {
 		"@repo/eslint-config": "*",
@@ -36,5 +39,8 @@
 		"postcss": "^8.4.35",
 		"tailwindcss": "^3.4.1",
 		"typescript": "5.5.4"
+	},
+	"dependencies": {
+		"@prisma/client": "^5.14.0"
 	}
 }

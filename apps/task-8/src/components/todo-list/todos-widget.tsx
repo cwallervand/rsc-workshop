@@ -1,9 +1,9 @@
+import { Card, CardTitle } from "@repo/ui/card";
 import { getTodos } from "../../server/serverFunctions";
 import { CheckBadge } from "../icons/check-badge";
-import { TodoList } from "../todoList/todoList";
-import { Card, CardTitle } from "../ui/card";
+import { TodoList } from "./todo-list";
 
-export const TodosWidget = async () => {
+export async function TodosWidget(): Promise<JSX.Element> {
   const todos = await getTodos();
 
   if (todos.length === 0) {
@@ -16,5 +16,5 @@ export const TodosWidget = async () => {
     );
   }
 
-  return <TodoList todos={todos}></TodoList>;
-};
+  return <TodoList todos={todos} />;
+}

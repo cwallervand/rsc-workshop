@@ -11,15 +11,15 @@ export function TodoFormInput({ isPending }: TodoFormInputProps): JSX.Element {
         <div className="flex flex-col w-full">
           <input
             className="focus:outline-none px-8 text-lg"
-            type="text"
             name="title"
             placeholder="Todo"
+            type="text"
           />
           <input
             className="focus:outline-none px-8 text-sm"
-            type="text"
             name="description"
             placeholder="Description"
+            type="text"
           />
         </div>
       </div>

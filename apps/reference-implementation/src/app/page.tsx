@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import { AddTodoForm } from "~/components/addTodoForm";
-import { TodosWidget } from "~/components/todoList/todosWidget";
-import { TodoListSkeleton } from "~/components/todoList/todoListSkeleton";
+import { AddTodoForm } from "~/components/add-todo-form";
+import { TodosWidget } from "~/components/todoList/todo-widget";
+import { TodoListSkeleton } from "~/components/todoList/todo-list-skeleton";
 
-export default function HomePage() {
+export default function HomePage(): JSX.Element {
   return (
     <>
       <header className="bg-gradient-to-r from-teal-300 to-indigo-600 py-20 text-white">

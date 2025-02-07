@@ -9,7 +9,7 @@ import { Pencil } from "@repo/ui/icons";
 
 import { Check } from "lucide-react";
 
-import { updateTodoTitle } from "~/server/serverFunctions";
+import { updateTodoTitle } from "~/server/server-functions";
 
 type TodoTitleProps = {
   todo: Todo;

@@ -3,12 +3,11 @@
 import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { type Todo } from "@prisma/client";
-
 import { db } from "~/server/db";
 
 const DELAY_CAUSED_BY_SOME_EVIL = 1500;
 
-export async function addTodo(formData: FormData) {
+export async function addTodo(formData: FormData): Promise<void> {
   const rawFormData = {
     title: formData.get("title"),
     description: formData.get("description"),
@@ -55,7 +54,10 @@ export async function getTodo(id: number): Promise<Todo> {
   return todo;
 }
 
-export async function setTodoDoneStatus(id: number, done: boolean) {
+export async function setTodoDoneStatus(
+  id: number,
+  done: boolean,
+): Promise<void> {
   await db.todo.update({
     where: {
       id,
@@ -67,7 +69,10 @@ export async function setTodoDoneStatus(id: number, done: boolean) {
   revalidatePath("/");
 }
 
-export async function updateTodoTitle(id: number, title: string) {
+export async function updateTodoTitle(
+  id: number,
+  title: string,
+): Promise<void> {
   await db.todo.update({
     where: {
       id,
@@ -79,7 +84,7 @@ export async function updateTodoTitle(id: number, title: string) {
   revalidatePath("/");
 }
 
-export async function deleteTodo(id: number) {
+export async function deleteTodo(id: number): Promise<void> {
   await db.todo.delete({
     where: {
       id,
@@ -89,5 +94,7 @@ export async function deleteTodo(id: number) {
 }
 
 function delay(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
