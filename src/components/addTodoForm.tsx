@@ -6,7 +6,7 @@ type AddTodoFormProps = {
 export const AddTodoForm = ({ className }: AddTodoFormProps) => {
   return (
     <form className={className}>
-      <p>Implementer skjemaet i denne komponenten</p>
+      <p><b>Implementer skjemaet i denne komponenten</b></p>
     </form>
   );
 };
