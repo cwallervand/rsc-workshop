@@ -56,10 +56,10 @@ git checkout task-2
 ```
 
 Fra og med denne opgpaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å være en server komponent.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent.
 
-Det er allerede satt opp en database (SQLite) som er populert med noen gjøremål.
-Prisma er brukt som ORM og det finnes allerede en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
+Det er satt opp en database (SQLite) som er populert med noen gjøremål.
+Prisma er brukt som ORM og det finnes en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
 
 Gjøremål kan hentes fra databasen slik:
 
@@ -144,29 +144,12 @@ Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så
   </p>
 </details>
 <details>
-  <summary>Hint 3: Hvordan oppdatere et enkelt felt på en <code>todo</code> mot databasen</summary>
-  <p>
-    <pre>
-      <code>
-        db.todo.update({
-          where: {
-            id,
-          },
-          data: {
-            title,
-          },
-        });
-      </code>
-    </pre>
-  </p>
-</details>
-<details>
-  <summary>Hint 4: En ny måte å gjøre form submits på</summary>
+  <summary>Hint 3: En ny måte å gjøre form submits på</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 5: En ny måte å hente form status på</summary>
+  <summary>Hint 4: En ny måte å hente form status på</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
@@ -198,7 +181,24 @@ Her er noen krav for denne featuren:
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
 
 <details>
-  <summary>Hint 1: Hvordan sette optimistisk status og lagre til databasen</summary>
+  <summary>Hint 1: Hvordan oppdatere et enkelt felt på en <code>todo</code> mot databasen</summary>
+  <p>
+    <pre>
+      <code>
+        db.todo.update({
+          where: {
+            id,
+          },
+          data: {
+            done,
+          },
+        });
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
 </details>
 
@@ -214,7 +214,7 @@ Her er noen krav for denne featuren:
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
 <details>
-  <summary>Hint 1: Hvordan sette optimistisk status og lagre til databasen</summary>
+  <summary>Hint 1: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
 </details>
 <details>
