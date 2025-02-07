@@ -108,6 +108,8 @@ Her er noen krav for denne featuren:
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
+Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk.
+
 <details>
   <summary>Hint 1: Hvordan bruke FormData</summary>
   <p>
