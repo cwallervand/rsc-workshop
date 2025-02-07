@@ -22,14 +22,17 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 
 ### Manuelt
 
-1. `npm i`
-2. `npm run db:generate`
+1. `npm i` - _Installerer nødvendige pakker_
+2. `npm run db:generate` - _Setter opp databasen og populerer den med data_
+3. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
 
 ### Med dev container (Docker)
 
 ## Oppgaver
 
-Vi har lagt opp til at du starter på scratch i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så mp du gjerne gjøre det.
+Det er lagt opp til at du starter med blanke ark i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så må du gjerne gjøre det.
+
+Hvis du i løpet av workshopen står fast eller bare er nysgjerrig på hvordan vi har løst en spesifikk oppgave så ligger vår implementasjon av Tudlu i `main` branchen.
 
 ### Oppgave 1: Hello Server Component!
 
