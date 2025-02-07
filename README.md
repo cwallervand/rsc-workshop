@@ -54,6 +54,8 @@ Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./sr
 
 Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk videre.
 
+---
+
 ### Oppgave 2: Refaktorer TodosWidget til å være en server komponent
 
 ```
@@ -91,6 +93,8 @@ const todos: Todo[] = await db.todo.findMany();
   <summary>Hint 4</summary>
   <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
 </details>
+
+---
 
 ### Oppgave 3: Opprette et nytt gjøremål
 
@@ -161,6 +165,8 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
 
+---
+
 ### Oppgave 4: Bedre UX med Suspense
 
 På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
@@ -175,6 +181,8 @@ Her er noen krav for denne featuren:
 
 - Skjemaet for å registrere en nt nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
 - Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+
+---
 
 ### Oppgave 5: Endre status på et gjøremål + optimistisk UI
 
@@ -208,6 +216,8 @@ Her er noen krav for denne featuren:
   <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
 </details>
+
+---
 
 ### Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
 
