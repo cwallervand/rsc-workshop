@@ -29,6 +29,8 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 
 ## Oppgaver
 
+Vi har lagt opp til at du starter på scratch i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så mp du gjerne gjøre det.
+
 ### Oppgave 1: Hello Server Component!
 
 ```
