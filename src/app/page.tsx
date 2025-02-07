@@ -4,7 +4,6 @@ import { TodosWidget } from "~/components/todoList/todosWidget";
 import { TodoListSkeleton } from "~/components/todoList/todoListSkeleton";
 
 export default function HomePage() {
-  console.log("### HomePage ###");
   return (
     <>
       <header className="bg-gradient-to-r from-teal-300 to-indigo-600 text-white py-20">
