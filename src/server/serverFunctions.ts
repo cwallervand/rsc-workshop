@@ -43,18 +43,6 @@ export async function getTodos(): Promise<Todo[]> {
   return todos;
 }
 
-export async function getTodo(id: number): Promise<Todo> {
-  const todo: Todo | null = await db.todo.findUnique({
-    where: { id },
-  });
-
-  if (!todo) {
-    throw new Error(`Todo with ID ${id} not found`);
-  }
-
-  return todo;
-}
-
 export async function setTodoDoneStatus(id: number, done: boolean) {
   await delay(DELAY_CAUSED_BY_SOME_EVIL);
   await db.todo.update({
