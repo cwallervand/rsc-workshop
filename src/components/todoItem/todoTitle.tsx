@@ -29,8 +29,6 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
   const editTitleInputId = `editTitleInput-${todo.id}`;
 
   const handleUpdateTodoTitle = async (event: React.FormEvent) => {
-    event.preventDefault();
-
     const inputElement = document.getElementById(
       editTitleInputId,
     ) as HTMLInputElement;
