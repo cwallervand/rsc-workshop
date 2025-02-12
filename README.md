@@ -12,7 +12,7 @@ Den produserte HTMLen fra komponenten blir så sendt til klienten hvor den flett
 "Hva er så fordelene med dette? Hvordan skiller det seg fra måten vi skrev komponenter på tidligere? Hvorfor skal jeg bry meg?". Du stiller mange spørsmål.
 
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette.
-Vi vil bidra med litt faglig input gjennom workshopen og du skal få lov til å utvikle applikasjonen Tudlu; en RSC-drevet gjøremålsapp!
+Vi vil bidra med litt faglig input, men vi synes at man lærer best med en "hands on" tilnærming så du skal få lov til å bruke mesteparten av tiden din på å utvikle gjøremålsappen Tudlu.
 
 Denne workshopen passer best for deg som allerede har litt erfaring med React.
 
