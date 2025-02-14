@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <main>
       <section>
-        <div className="flex flex-row justify-center gap-4 mb-4">
+        <div className="flex flex-row justify-center gap-4 mb-8">
           <div className="server">Components rendered on the server are orange</div>
           <div className="client">Components rendered on the client are blue</div>
         </div>
