@@ -26,13 +26,13 @@ export default function HomePage() {
           <ClientComponent message="I am a ClientComponent and I have a ClientComponent parent!" />
         </ClientComponent> */}
 
-        {/* <ClientComponent message="I am a ClientComponent and I have a ServerComponent child!">
-          <ServerComponent message="I am a ServerComponent inside another ClientComponent!" />
-        </ClientComponent> */}
-
         {/* <ServerComponent message="I am a ServerComponent and I have a ClientComponent child!">
           <ClientComponent message="I am a ClientComponent and I have a ServerComponent parent!" />
         </ServerComponent> */}
+
+        {/* <ClientComponent message="I am a ClientComponent and I have a ServerComponent child!">
+          <ServerComponent message="I am a ServerComponent inside another ClientComponent!" />
+        </ClientComponent> */}
 
         {/* <ClientComponentWithSlot
           slot={<ServerComponent message="I am a ServerComponent passed as a prop to ClientComponent!" />}
