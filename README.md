@@ -239,3 +239,8 @@ Her er noen krav for denne featuren:
   <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
   Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
 </details>
+
+## Ressurser
+
+- [Demystifying React Server Components](https://demystifying-rsc.vercel.app/)
+- [NextJs Server and Client Composition Patterns](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns)
