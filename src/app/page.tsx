@@ -8,8 +8,9 @@ import { ClientComponentWithServerComponentImport } from "~/components/clientCom
 export default function HomePage() {
   return (
     <main>
-      <section>
-        <div className="flex flex-row justify-center gap-4 mb-4">
+      <section className="flex flex-col items-center min-h-screen py-2 gap-4 relative">
+        <div className="absolute bottom-2 right-2 flex flex-col justify-center gap-4 mb-4 border-2 border-slate-500 bg-slate-100 p-4 rounded-xl">
+          <h2 className="text-xl">What do the colors mean?</h2>
           <div className="server">Components rendered on the server are orange</div>
           <div className="client">Components rendered on the client are blue</div>
         </div>

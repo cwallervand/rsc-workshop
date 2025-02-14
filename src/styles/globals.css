@@ -81,13 +81,13 @@
 
 .server,
 .client {
-  @apply mb-4 border-2 p-4 text-xl;
+  @apply border-2 py-4 px-6 text-xl rounded-lg;
 }
 
 .server {
-  @apply border-orange-600 text-orange-600;
+  @apply border-orange-600 text-orange-600 bg-orange-50;
 }
 
 .client {
-  @apply border-blue-500 text-blue-500;
+  @apply border-blue-500 text-blue-500 bg-blue-50;
 }
