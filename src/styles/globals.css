@@ -81,7 +81,7 @@
 
 .server,
 .client {
-  @apply border-2 py-4 px-6 text-xl rounded-lg;
+  @apply border-2 py-4 px-6 text-xl rounded-sm;
 }
 
 .server {
