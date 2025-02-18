@@ -25,6 +25,7 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 1. `npm i` - _Installerer nødvendige pakker_
 2. `npm run db:generate` - _Setter opp databasen og populerer den med data. Ved spørsmål om navn på migreringen kan du bare trykke enter_
 3. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
+4. [Åpne applikasjonen](http://localhost:3000)
 
 ### Med dev container (Docker)
 
