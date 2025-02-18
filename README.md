@@ -12,7 +12,7 @@ Den produserte HTMLen fra komponenten blir så sendt til klienten hvor den flett
 "Hva er så fordelene med dette? Hvordan skiller det seg fra måten vi skrev komponenter på tidligere? Hvorfor skal jeg bry meg?". Du stiller mange spørsmål.
 
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette.
-Vi vil bidra med litt faglig input gjennom workshopen og du skal få lov til å utvikle applikasjonen Tudlu; en RSC-drevet gjøremålsapp!
+Vi vil bidra med litt faglig input, men vi synes at man lærer best med en "hands on" tilnærming så du skal få lov til å bruke mesteparten av tiden din på å utvikle gjøremålsappen Tudlu.
 
 Denne workshopen passer best for deg som allerede har litt erfaring med React.
 
@@ -22,14 +22,18 @@ Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alt
 
 ### Manuelt
 
-1. `npm i`
-2. `npm run db:generate`
+1. `npm i` - _Installerer nødvendige pakker_
+2. `npm run db:generate` - _Setter opp databasen og populerer den med data. Ved spørsmål om navn på migreringen kan du bare trykke enter_
+3. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
+4. [Åpne applikasjonen](http://localhost:3000)
 
 ### Med dev container (Docker)
 
 ## Oppgaver
 
-Vi har lagt opp til at du starter på scratch i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så mp du gjerne gjøre det.
+Det er lagt opp til at du starter med blanke ark i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så må du gjerne gjøre det.
+
+Hvis du i løpet av workshopen står fast eller bare er nysgjerrig på hvordan vi har løst en spesifikk oppgave så ligger vår implementasjon av Tudlu i `main` branchen.
 
 ### Oppgave 1: Hello Server Component!
 
@@ -38,11 +42,12 @@ git checkout task-1
 ```
 
 I denne oppgaven skal du utforske litt hvordan klient- og server-komponenter blir rendret og hvordan komposisjon kan gjøres.
+Ha i bakhodet at applikasjonen er rendret på server på page request, også komponentene som er marker med `use client`.
 
 Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000).
 
 Åpne filen [src/app/page.tsx](./src/app/page.tsx) og utforsk hvordan de forskjellige komponentene oppfører seg.
-Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./src/components/serverComponent.tsx).
+Akkurat nå er det kun komponentene [ServerComponent](./src/components/serverComponent.tsx) og [ClientComponent](./src/components/clientComponent.tsx) som er i bruk.
 
 - Hvor kjøres / rendres komponenten? Se i loggene på server og på klient.
 - Er den med innkludert i JS-bundle på klienten?
@@ -50,6 +55,8 @@ Akkurat nå er det kun en enkelt komponent som er i bruk; [ServerComponent](./sr
 - Hva skjer hvis du f.eks prøver å bruke `useState` i en server-komponent?
 
 Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk videre.
+
+---
 
 ### Oppgave 2: Refaktorer TodosWidget til å være en server komponent
 
@@ -89,6 +96,8 @@ const todos: Todo[] = await db.todo.findMany();
   <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
 </details>
 
+---
+
 ### Oppgave 3: Opprette et nytt gjøremål
 
 ```
@@ -107,6 +116,8 @@ Her er noen krav for denne featuren:
 - [`zod`](https://zod.dev/) skal brukes for å validere dataene
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
+
+Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk.
 
 <details>
   <summary>Hint 1: Hvordan bruke FormData</summary>
@@ -156,6 +167,8 @@ Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
 
+---
+
 ### Oppgave 4: Bedre UX med Suspense
 
 På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
@@ -170,6 +183,8 @@ Her er noen krav for denne featuren:
 
 - Skjemaet for å registrere en nt nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
 - Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+
+---
 
 ### Oppgave 5: Endre status på et gjøremål + optimistisk UI
 
@@ -204,6 +219,8 @@ Her er noen krav for denne featuren:
   <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
 </details>
 
+---
+
 ### Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
 
 I denne oppgaven skal du legge til en feature for å endre tittelen på et gjøremål.
@@ -223,3 +240,8 @@ Her er noen krav for denne featuren:
   <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
   Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
 </details>
+
+## Ressurser
+
+- [Demystifying React Server Components](https://demystifying-rsc.vercel.app/)
+- [NextJs Server and Client Composition Patterns](https://nextjs.org/docs/app/building-your-application/rendering/composition-patterns)
