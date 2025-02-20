@@ -1,7 +1,6 @@
 "use client";
 import { type ReactNode } from "react";
 
-
 import { ClientComponent } from "~/components/clientComponent";
 
 type ClientComponentWithSlotProps = {
