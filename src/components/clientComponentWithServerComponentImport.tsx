@@ -7,7 +7,7 @@ export const ClientComponentWithServerComponentImport = () => {
   console.log("### ClientComponentWithServerComponentImport ###");
   return (
     <ClientComponent message="I am a ClientComponent and I have a ServerComponent child (passed as a prop)! Please refresh the page!">
-      <ServerComponent />
+      <ServerComponent message="Rule of thumb: Do not import server components in client components." />
     </ClientComponent>
   );
 };
