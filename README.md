@@ -14,7 +14,7 @@ Den produserte HTMLen fra komponenten blir så sendt til klienten hvor den flett
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette.
 Vi vil bidra med litt faglig input, men vi synes at man lærer best med en "hands on" tilnærming så du skal få lov til å bruke mesteparten av tiden din på å utvikle gjøremålsappen Tudlu.
 
-Denne workshopen passer best for deg som allerede har litt erfaring med React.
+Denne workshopen passer best for deg som har erfaring med React.
 
 ## Oppsett
 
@@ -58,17 +58,27 @@ Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk vid
 
 ---
 
-### Oppgave 2: Refaktorer TodosWidget til å være en server komponent
+### Oppgave 2: Gjør om TodosWidget til å være en server komponent
+
+Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](#oppsett) av applikasjonen.
 
 ```
 git checkout task-2
 ```
 
-Fra og med denne opgpaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent.
+Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient relaterte ting skal bort.
 
-Det er satt opp en database (SQLite) som er populert med noen gjøremål.
-Prisma er brukt som ORM og det finnes en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for komponenter å kalle på asynkrone funksjoner som utføres på serveren_
+- Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+
+Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
+Disse gjøreålene skal du hente ut fra databasen og vise i Tudlu-appen.
+Til å gjøre operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker når man gjør CRUD-operasjoner mot databasen. Definisjonen av en `todo` finner du i [schema.prisma](./prisma/schema.prisma).
+
+Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
 
 Gjøremål kan hentes fra databasen slik:
 
