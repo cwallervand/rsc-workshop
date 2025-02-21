@@ -71,13 +71,13 @@ Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre 
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
-- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
-- Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+- [_Server Functions_](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
+- Direktivet [`use server`](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
 - [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server komponenter kan være asynkrone_
 
 Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
 Disse gjøremålene skal du hente ut fra databasen og vise i Tudlu-appen.
-Til å gjøre CRUD-operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker mot databsen. Definisjonen av en `Todo` finner du i [schema.prisma](./prisma/schema.prisma).
+Til å gjøre CRUD-operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker mot databasen. Definisjonen av en `Todo` finner du i [schema.prisma](./prisma/schema.prisma).
 
 Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
 
@@ -104,13 +104,18 @@ Her er noen krav for denne featuren:
 
 - Et gjøremål må ha en tittel
 - Et gjøremål kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables. TODO: Legg til info om useFormStatus
+- Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren. TODO: Skriv mer info om dette
-- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren. TODO: Skriv mer om dette
+- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
-Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk.
+Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk hvis du ønsker å bruke de.
+
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [_Server Functions_ sammen med _Form Actions_](https://react.dev/reference/rsc/server-functions#using-server-functions-with-form-actions)
+- [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) - Hook som gir informasjon om status på siste form submit
 
 <details>
   <summary>Hint 1: Hvordan bruke FormData</summary>
@@ -128,14 +133,12 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
   </p>
 </details>
 <details>
-  <summary>Hint 2: En ny måte å gjøre form submits på</summary>
-  <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
-  <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
-</details>
-<details>
-  <summary>Hint 3: En ny måte å hente form status på</summary>
-  <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
-  <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
+  <summary>Hint 2: <code>revalidatePath</code></summary>
+  <p>
+    <pre>
+      <code>revalidatePath("/");</code>
+    </pre>
+  </p>
 </details>
 
 ---
