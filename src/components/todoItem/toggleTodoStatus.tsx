@@ -41,9 +41,7 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
       className="border-0 [&_svg]:size-8"
       onClick={handleToggleTodoStatus}
     >
-      <CheckBadge
-        className={`${optimisticTodo.done ? "text-green-700" : "text-red-700"}`}
-      />
+      <CheckBadge done={optimisticTodo.done} />
     </Button>
   );
 };
