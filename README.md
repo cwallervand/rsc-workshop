@@ -228,6 +228,8 @@ Her er noen krav for denne featuren:
 - Ved oppdateringsfeil skal UIet vise den faktiske tittelen på gjøremålet.
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
+Komponenten [`<Pencil />`](./src/components/icons/pencil.tsx) kan for eksempel brukes til å toggle mellom visningsmodus og redigeringsmodus.
+
 <details>
   <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
