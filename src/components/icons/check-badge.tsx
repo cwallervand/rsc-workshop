@@ -1,17 +1,18 @@
 import { type FC } from "react";
 
 type CheckBadgeProps = {
+  done: boolean;
   className?: string;
 };
 
-export const CheckBadge: FC<CheckBadgeProps> = ({ className }) => (
+export const CheckBadge: FC<CheckBadgeProps> = ({ className, done }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="currentColor"
-    className={`size-6 ${className}`}
+    className={`size-6 ${done ? "text-green-700" : "text-red-700"} ${className}`}
   >
     <path
       strokeLinecap="round"
