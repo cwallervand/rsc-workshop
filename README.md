@@ -110,10 +110,9 @@ Her er noen krav for denne featuren:
 
 - Et gjøremål må ha en tittel
 - Et gjøremål kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables.
-- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
-- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren
-- [`zod`](https://zod.dev/) skal brukes for å validere dataene
+- Mens det skrives til databasen så skal lagre-knappen disables. TODO: Legg til info om useFormStatus
+- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren. TODO: Skriv mer info om dette
+- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren. TODO: Skriv mer om dette
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
@@ -125,9 +124,9 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
     <pre>
       <code>
       function addTodo(formData: FormData) {
-        const rawFormData = {
-          title: formData.get("title"),
-          description: formData.get("description"),
+        const todo = {
+          title: formData.get("title") as string,
+          description: formData.get("description") as string | null,
         };
       }
       </code>
@@ -135,34 +134,12 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
   </p>
 </details>
 <details>
-  <summary>Hint 2: Hvordan bruke zod for å validere FormData</summary>
-  <p>
-    <pre>
-      <code>
-        function addTodo(formData: FormData) {
-          const rawFormData = {
-            title: formData.get("title"),
-            description: formData.get("description"),
-          };
-          const createTodoSchema = z.object({
-            title: z.string().min(1),
-            description: z.string().nullish(),
-          });
-          try {
-            const validTodo = createTodoSchema.parse(rawFormData);
-          } catch (error) {}
-        }
-      </code>
-    </pre>
-  </p>
-</details>
-<details>
-  <summary>Hint 3: En ny måte å gjøre form submits på</summary>
+  <summary>Hint 2: En ny måte å gjøre form submits på</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 4: En ny måte å hente form status på</summary>
+  <summary>Hint 3: En ny måte å hente form status på</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>

@@ -1,6 +1,5 @@
 "use server";
 
-import { z } from "zod";
 import { revalidatePath } from "next/cache";
 import { type Todo } from "@prisma/client";
 
@@ -9,31 +8,18 @@ import { db } from "~/server/db";
 const DELAY_CAUSED_BY_SOME_EVIL = 1500;
 
 export async function addTodo(formData: FormData) {
-  const rawFormData = {
-    title: formData.get("title"),
-    description: formData.get("description"),
+  await delay(DELAY_CAUSED_BY_SOME_EVIL);
+
+  const todo = {
+    title: formData.get("title") as string,
+    description: formData.get("description") as string | null,
   };
 
-  const createTodoSchema = z.object({
-    title: z.string().min(1),
-    description: z.string().nullish(),
+  await db.todo.create({
+    data: todo,
   });
 
-  try {
-    const validTodo = createTodoSchema.parse(rawFormData);
-    await delay(DELAY_CAUSED_BY_SOME_EVIL);
-
-    await db.todo.create({
-      data: validTodo,
-    });
-    revalidatePath("/");
-  } catch (error) {
-    if (error instanceof z.ZodError) {
-      console.error("Validation failed:", error.errors);
-    } else {
-      console.error("Unexpected error:", error);
-    }
-  }
+  revalidatePath("/");
 }
 
 export async function getTodos(): Promise<Todo[]> {
