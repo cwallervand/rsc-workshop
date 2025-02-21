@@ -67,16 +67,17 @@ git checkout task-2
 ```
 
 Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient relaterte ting skal bort.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient relaterte ting i komponenten skal bort.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
-- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
-- Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+- [_Server Functions_](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
+- Direktivet [`use server`](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+- [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server komponenter kan være asynkrone_
 
 Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
-Disse gjøreålene skal du hente ut fra databasen og vise i Tudlu-appen.
-Til å gjøre operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker når man gjør CRUD-operasjoner mot databasen. Definisjonen av en `todo` finner du i [schema.prisma](./prisma/schema.prisma).
+Disse gjøremålene skal du hente ut fra databasen og vise i Tudlu-appen.
+Til å gjøre CRUD-operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker mot databasen. Definisjonen av en `Todo` finner du i [schema.prisma](./prisma/schema.prisma).
 
 Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
 
@@ -88,23 +89,6 @@ import { type Todo } from "@prisma/client";
 
 const todos: Todo[] = await db.todo.findMany();
 ```
-
-<details>
-  <summary>Hint 1</summary>
-  <p>Selve datahentingen gjøres i <code>TodosWidget</code></p>
-</details>
-<details>
-  <summary>Hint 2</summary>
-  <p>Klienten må kunne hente data fra serveren på en eller annen måte</p>
-</details>
-<details>
-  <summary>Hint 3</summary>
-  <p><code>'use server';</code></p>
-</details>
-<details>
-  <summary>Hint 4</summary>
-  <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
-</details>
 
 ---
 
@@ -120,13 +104,18 @@ Her er noen krav for denne featuren:
 
 - Et gjøremål må ha en tittel
 - Et gjøremål kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables. TODO: Legg til info om useFormStatus
+- Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren. TODO: Skriv mer info om dette
-- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren. TODO: Skriv mer om dette
+- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
-Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk.
+Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk hvis du ønsker å bruke de.
+
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [_Server Functions_ sammen med _Form Actions_](https://react.dev/reference/rsc/server-functions#using-server-functions-with-form-actions)
+- [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) - Hook som gir informasjon om status på siste form submit
 
 <details>
   <summary>Hint 1: Hvordan bruke FormData</summary>
@@ -144,14 +133,12 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
   </p>
 </details>
 <details>
-  <summary>Hint 2: En ny måte å gjøre form submits på</summary>
-  <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
-  <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
-</details>
-<details>
-  <summary>Hint 3: En ny måte å hente form status på</summary>
-  <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
-  <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
+  <summary>Hint 2: <code>revalidatePath</code></summary>
+  <p>
+    <pre>
+      <code>revalidatePath("/");</code>
+    </pre>
+  </p>
 </details>
 
 ---
@@ -166,7 +153,7 @@ På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å 
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
 Per nå så får vi ingenting tilbake fra serveren før alle gjøremål er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
 
-I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
+I React så finnes det en komponent som heter [`<Suspense>`](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
 I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i Tudlu.
 
@@ -174,6 +161,10 @@ Her er noen krav for denne featuren:
 
 - Skjemaet for å registrere en nt nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
 - Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
+
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [`<Suspense>`](https://react.dev/reference/react/Suspense) - _Lar deg rendre en fallback inntil alle barn er ferdig lastet_
 
 ---
 
@@ -189,8 +180,14 @@ Her er noen krav for denne featuren:
 
 - Hvert gjøremål i listen skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på et gjøremål
-- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- UIet skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
+
+Komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) kan for eksempel brukes til å vise og endre status.
+
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [`useOptimistic`](https://react.dev/reference/react/useOptimistic) - _En hook som lar deg gjøre optimistiske oppdateringer i UI_
 
 <details>
   <summary>Hint 1: Hvordan oppdatere et enkelt felt på en <code>todo</code> mot databasen</summary>
@@ -211,7 +208,7 @@ Her er noen krav for denne featuren:
 </details>
 <details>
   <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
-  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+  <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 
 ---
@@ -227,18 +224,28 @@ I denne oppgaven skal du legge til en feature for å endre tittelen på et gjør
 Her er noen krav for denne featuren:
 
 - Det skal være to moduser for tittelen på et gjøremål: visningsmodus og redigeringsmodus.
-- UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- UIet skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske tittelen på gjøremålet.
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
 <details>
-  <summary>Hint 1: <q>An optimistic state update occurred outside a transition or action</q></summary>
-  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+  <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
+  <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 <details>
   <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
   Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
 </details>
+
+## Tech stack
+
+- [T3 Stack](https://create.t3.gg/)
+- [React](https://react.dev/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [SQLite](https://www.sqlite.org/)
+- [Prisma ORM](https://www.prisma.io/orm)
 
 ## Ressurser
 

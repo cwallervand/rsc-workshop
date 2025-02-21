@@ -9,13 +9,13 @@ async function main() {
   };
 
   const oppgave2 = {
-    title: "Oppgave 2: Refaktorer TodosWidget til å være en server komponent",
+    title: "Oppgave 2: Gjør om TodosWidget til å være en server komponent",
     description: "",
     done: false,
   };
 
   const oppgave3 = {
-    title: "Oppgave 3: Opprette en ny TODO",
+    title: "Oppgave 3: Opprette et nytt gjøremål",
     description: "",
     done: false,
   };
