@@ -171,6 +171,10 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
 
 ### Oppgave 4: Bedre UX med Suspense
 
+```
+git checkout task-4
+```
+
 På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
 Per nå så får vi ingenting tilbake fra serveren før alle gjøremål er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
@@ -187,6 +191,10 @@ Her er noen krav for denne featuren:
 ---
 
 ### Oppgave 5: Endre status på et gjøremål + optimistisk UI
+
+```
+git checkout task-5
+```
 
 I denne oppgaven skal du legge til en feature for å endre statusen på et gjøremål (gjort / ikke gjort).
 
@@ -222,6 +230,10 @@ Her er noen krav for denne featuren:
 ---
 
 ### Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
+
+```
+git checkout task-6
+```
 
 I denne oppgaven skal du legge til en feature for å endre tittelen på et gjøremål.
 
