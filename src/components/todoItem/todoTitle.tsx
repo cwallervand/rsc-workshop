@@ -1,12 +1,11 @@
 "use client";
-import { type FC, useState, useOptimistic, useTransition } from "react";
+import { type FC, useState, useOptimistic, startTransition } from "react";
 import { type Todo } from "@prisma/client";
+import { Check } from "lucide-react";
 
 import { CardTitle } from "~/components/ui/card";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
-import { Check } from "lucide-react";
-
 import { Pencil } from "~/components/icons/pencil";
 
 import { updateTodoTitle } from "~/server/serverFunctions";
@@ -23,12 +22,11 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
       title: optimisitcTodoTitle,
     }),
   );
-  const [isPending, startTransition] = useTransition();
 
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
   const editTitleInputId = `editTitleInput-${todo.id}`;
 
-  const handleUpdateTodoTitle = async (event: React.FormEvent) => {
+  const handleUpdateTodoTitle = () => {
     const inputElement = document.getElementById(
       editTitleInputId,
     ) as HTMLInputElement;
@@ -43,7 +41,6 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
       } catch {
         updateOptimisticTodoTitle(todo.title);
       }
-
     });
   };
 
