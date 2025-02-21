@@ -206,7 +206,7 @@ Nye konsepter du trenger å vite om i denne oppgaven er:
 </details>
 <details>
   <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
-  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+  <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 
 ---
@@ -222,13 +222,13 @@ I denne oppgaven skal du legge til en feature for å endre tittelen på et gjør
 Her er noen krav for denne featuren:
 
 - Det skal være to moduser for tittelen på et gjøremål: visningsmodus og redigeringsmodus.
-- UIet skal oppdateres med en gang man har endret tittelen: man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- UIet skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske tittelen på gjøremålet.
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
 <details>
-  <summary>Hint 1: <q>An optimistic state update occurred outside a transition or action</q></summary>
-  <p>Bruk <code><a href="https://react.dev/reference/react/useTransition">useTransition</a></code></p>
+  <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
+  <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 <details>
   <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
