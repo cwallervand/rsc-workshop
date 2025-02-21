@@ -1,29 +1,13 @@
 'use client';
+
+import { getTodos } from "~/server/serverFunctions";
+
 import { type Todo } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 import { CheckBadge } from "~/components/icons/check-badge";
 import { Card, CardTitle } from "~/components/ui/card";
 import { TodoList } from "~/components/todoList/todoList";
-
-const delay = (ms: number): Promise<void> => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-const getTodos = async (): Promise<Todo[]> => {
-  await delay(1500);
-  return Promise.resolve([
-    {
-      id: 1,
-      title: "Oppgave 1: Hello Server Component!",
-      description:
-        "Utforsk hvordan ClientComponent og ServerComponent komponentene blir rendret. Utforsk de forskjellige komposisjonsmønsterene. Hva skjer på server og hva skjer på klienten? ",
-      done: true,
-      createdAt: new Date(),
-    },
-  ]);
-};
-
 
 export const TodosWidget = () => {
   console.log('### TodosWidget ###');
