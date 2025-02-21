@@ -71,7 +71,7 @@ Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre 
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
-- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for komponenter å kalle på asynkrone funksjoner som utføres på serveren_
+- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
 - Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
 
 Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
