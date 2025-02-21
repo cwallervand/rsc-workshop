@@ -53,6 +53,7 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
             type="text"
             name="title"
             defaultValue={optimisticTodo.title}
+            autoFocus
           />
           <Button
             variant="ghost"
