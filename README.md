@@ -153,7 +153,7 @@ På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å 
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
 Per nå så får vi ingenting tilbake fra serveren før alle gjøremål er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
 
-I React så finnes det en komponent som heter [Suspense](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
+I React så finnes det en komponent som heter [`<Suspense>`](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
 
 I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i Tudlu.
 
@@ -164,7 +164,7 @@ Her er noen krav for denne featuren:
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
-- [Suspense](https://react.dev/reference/react/Suspense) - _Lar deg rendre en fallback inntil alle barn er ferdig lastet_
+- [`<Suspense>`](https://react.dev/reference/react/Suspense) - _Lar deg rendre en fallback inntil alle barn er ferdig lastet_
 
 ---
 
@@ -180,8 +180,12 @@ Her er noen krav for denne featuren:
 
 - Hvert gjøremål i listen skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på et gjøremål
-- UIet skal oppdateres med en gang man har endret status til å reflektere den nye statusen. Til dette skal man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- UIet skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
+
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [`useOptimistic`](https://react.dev/reference/react/useOptimistic) - _En hook som lar deg gjøre optimistiske oppdateringer i UI_
 
 <details>
   <summary>Hint 1: Hvordan oppdatere et enkelt felt på en <code>todo</code> mot databasen</summary>
