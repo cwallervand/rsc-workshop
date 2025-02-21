@@ -183,6 +183,8 @@ Her er noen krav for denne featuren:
 - UIet skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
 
+Komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) kan for eksempel brukes til å vise og endre status.
+
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
 - [`useOptimistic`](https://react.dev/reference/react/useOptimistic) - _En hook som lar deg gjøre optimistiske oppdateringer i UI_
