@@ -73,6 +73,7 @@ Nye konsepter du trenger å vite om i denne oppgaven er:
 
 - [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
 - Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+- [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server komponenter kan være asynkrone_
 
 Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
 Disse gjøremålene skal du hente ut fra databasen og vise i Tudlu-appen.
@@ -88,23 +89,6 @@ import { type Todo } from "@prisma/client";
 
 const todos: Todo[] = await db.todo.findMany();
 ```
-
-<details>
-  <summary>Hint 1</summary>
-  <p>Selve datahentingen gjøres i <code>TodosWidget</code></p>
-</details>
-<details>
-  <summary>Hint 2</summary>
-  <p>Klienten må kunne hente data fra serveren på en eller annen måte</p>
-</details>
-<details>
-  <summary>Hint 3</summary>
-  <p><code>'use server';</code></p>
-</details>
-<details>
-  <summary>Hint 4</summary>
-  <p>Det kan være en god ide å ha server-funksjoner samlet i en egen fil.</p>
-</details>
 
 ---
 
