@@ -35,7 +35,7 @@ export const TodoItemMenu: FC<TodoItemMenuProps> = ({ todo }) => {
         <DropdownMenuItem
           onClick={() => setTodoDoneStatus(todo.id, !todo.done)}
         >
-          <CheckBadge />
+          <CheckBadge done={todo.done} />
           {todo.done ? "Set at not done" : "Set as done"}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => deleteTodo(todo.id)}>
