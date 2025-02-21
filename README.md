@@ -14,7 +14,7 @@ Den produserte HTMLen fra komponenten blir så sendt til klienten hvor den flett
 I løpet av denne workshopen så kommer du til å bli litt klokere på alt dette.
 Vi vil bidra med litt faglig input, men vi synes at man lærer best med en "hands on" tilnærming så du skal få lov til å bruke mesteparten av tiden din på å utvikle gjøremålsappen Tudlu.
 
-Denne workshopen passer best for deg som allerede har litt erfaring med React.
+Denne workshopen passer best for deg som har erfaring med React.
 
 ## Oppsett
 
@@ -58,17 +58,27 @@ Fjern kommentarene fra de andre komponentene (gjerne en etter en) og utforsk vid
 
 ---
 
-### Oppgave 2: Refaktorer TodosWidget til å være en server komponent
+### Oppgave 2: Gjør om TodosWidget til å være en server komponent
+
+Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](#oppsett) av applikasjonen.
 
 ```
 git checkout task-2
 ```
 
-Fra og med denne opgpaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å refaktorere komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent.
+Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient relaterte ting skal bort.
 
-Det er satt opp en database (SQLite) som er populert med noen gjøremål.
-Prisma er brukt som ORM og det finnes en definert `Todo` type. Definisjonen er i [schema.prisma](./prisma/schema.prisma).
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [Server Functions](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
+- Direktivet [use server](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
+
+Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
+Disse gjøreålene skal du hente ut fra databasen og vise i Tudlu-appen.
+Til å gjøre operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker når man gjør CRUD-operasjoner mot databasen. Definisjonen av en `todo` finner du i [schema.prisma](./prisma/schema.prisma).
+
+Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
 
 Gjøremål kan hentes fra databasen slik:
 
@@ -110,10 +120,9 @@ Her er noen krav for denne featuren:
 
 - Et gjøremål må ha en tittel
 - Et gjøremål kan ha en beskrivelse
-- Mens det skrives til databasen så skal lagre-knappen disables.
-- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren
-- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren
-- [`zod`](https://zod.dev/) skal brukes for å validere dataene
+- Mens det skrives til databasen så skal lagre-knappen disables. TODO: Legg til info om useFormStatus
+- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren. TODO: Skriv mer info om dette
+- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende data til serveren. TODO: Skriv mer om dette
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
@@ -125,9 +134,9 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
     <pre>
       <code>
       function addTodo(formData: FormData) {
-        const rawFormData = {
-          title: formData.get("title"),
-          description: formData.get("description"),
+        const todo = {
+          title: formData.get("title") as string,
+          description: formData.get("description") as string | null,
         };
       }
       </code>
@@ -135,34 +144,12 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
   </p>
 </details>
 <details>
-  <summary>Hint 2: Hvordan bruke zod for å validere FormData</summary>
-  <p>
-    <pre>
-      <code>
-        function addTodo(formData: FormData) {
-          const rawFormData = {
-            title: formData.get("title"),
-            description: formData.get("description"),
-          };
-          const createTodoSchema = z.object({
-            title: z.string().min(1),
-            description: z.string().nullish(),
-          });
-          try {
-            const validTodo = createTodoSchema.parse(rawFormData);
-          } catch (error) {}
-        }
-      </code>
-    </pre>
-  </p>
-</details>
-<details>
-  <summary>Hint 3: En ny måte å gjøre form submits på</summary>
+  <summary>Hint 2: En ny måte å gjøre form submits på</summary>
   <p>Bruk en <i>Server Function</i> for å gjøre form submit</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#handle-form-submission-with-a-server-function">Dokumentasjon</a></p>
 </details>
 <details>
-  <summary>Hint 4: En ny måte å hente form status på</summary>
+  <summary>Hint 3: En ny måte å hente form status på</summary>
   <p>Bruk <code>useFormStatus</code> for å sette <code>disabled</code> på lagre-knappen</p>
   <p><a href="https://react.dev/reference/react-dom/components/form#display-a-pending-state-during-form-submission">Dokumentasjon</a></p>
 </details>
@@ -170,6 +157,10 @@ Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/componen
 ---
 
 ### Oppgave 4: Bedre UX med Suspense
+
+```
+git checkout task-4
+```
 
 På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
 Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
@@ -187,6 +178,10 @@ Her er noen krav for denne featuren:
 ---
 
 ### Oppgave 5: Endre status på et gjøremål + optimistisk UI
+
+```
+git checkout task-5
+```
 
 I denne oppgaven skal du legge til en feature for å endre statusen på et gjøremål (gjort / ikke gjort).
 
@@ -222,6 +217,10 @@ Her er noen krav for denne featuren:
 ---
 
 ### Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
+
+```
+git checkout task-6
+```
 
 I denne oppgaven skal du legge til en feature for å endre tittelen på et gjøremål.
 
