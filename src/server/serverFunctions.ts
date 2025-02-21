@@ -7,7 +7,7 @@ import { db } from "~/server/db";
 const DELAY_CAUSED_BY_SOME_EVIL = 1500;
 
 export async function getTodos(): Promise<Todo[]> {
-  await delay(DELAY_CAUSED_BY_SOME_EVIL);
+  await delay(DELAY_CAUSED_BY_SOME_EVIL); // Leve me alone
   const todos: Todo[] = await db.todo.findMany();
 
   return todos;
