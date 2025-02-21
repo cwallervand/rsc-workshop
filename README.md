@@ -224,6 +224,16 @@ Her er noen krav for denne featuren:
   Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
 </details>
 
+## Tech stack
+
+- [T3 Stack](https://create.t3.gg/)
+- [React](https://react.dev/)
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- [SQLite](https://www.sqlite.org/)
+- [Prisma ORM](https://www.prisma.io/orm)
+
 ## Ressurser
 
 - [Demystifying React Server Components](https://demystifying-rsc.vercel.app/)
