@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC, useOptimistic, useTransition } from "react";
+import { type FC, useOptimistic, startTransition } from "react";
 import { type Todo } from "@prisma/client";
 
 import { Button } from "~/components/ui/button";
@@ -13,7 +13,6 @@ type ToggleTodoStatusProps = {
 };
 
 export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
-  const [isPending, startTransition] = useTransition();
 
   const [optimisticTodo, toggleOptimisticTodoStatus] = useOptimistic(
     todo,
