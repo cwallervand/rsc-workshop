@@ -174,16 +174,17 @@ Nye konsepter du trenger å vite om i denne oppgaven er:
 git checkout task-5
 ```
 
-I denne oppgaven skal du legge til en feature for å endre statusen på et gjøremål (gjort / ikke gjort).
+I denne oppgaven skal du legge til en feature for å vise og endre statusen på et gjøremål (gjort / ikke gjort).
 
 Her er noen krav for denne featuren:
 
 - Hvert gjøremål i listen skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på et gjøremål
-- UIet skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
-- Ved oppdateringsfeil skal UIet vise den faktiske statusen på gjøremålet.
+- UI-et skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- Ved oppdateringsfeil skal UI-et vise den faktiske statusen på gjøremålet.
 
-Komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) kan for eksempel brukes til å vise og endre status.
+Det er allerede blitt laget en komponent [toggleTodoStatus](./src/components/todoItem/toggleTodoStatus.tsx) som du kan bygge videre på hvis du ønsker et utgangspunkt.
+Ellers er komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) også tilgjengelig.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
@@ -224,14 +225,14 @@ I denne oppgaven skal du legge til en feature for å endre tittelen på et gjør
 Her er noen krav for denne featuren:
 
 - Det skal være to moduser for tittelen på et gjøremål: visningsmodus og redigeringsmodus.
-- UIet skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
-- Ved oppdateringsfeil skal UIet vise den faktiske tittelen på gjøremålet.
+- UI-et skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- Ved oppdateringsfeil skal UI-et vise den faktiske tittelen på gjøremålet.
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 
 Komponenten [`<Pencil />`](./src/components/icons/pencil.tsx) kan for eksempel brukes til å toggle mellom visningsmodus og redigeringsmodus.
 
 <details>
-  <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
+  <summary>Hint 1: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 <details>
