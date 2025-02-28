@@ -18,7 +18,7 @@ Denne workshopen passer best for deg som har erfaring med React.
 
 ## Oppsett
 
-Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alternativt så kan du initialisere applikasjonen manuelt.
+Du kan initialisere applikasjonen [manuelt](#manuelt) eller, hvis du har [Docker](https://www.docker.com/), så kan applikasjonen initialiseres [med dev container](#med-dev-container-docker).
 
 ### Manuelt
 
