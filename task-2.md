@@ -1,6 +1,6 @@
 # Oppgave 2: Gjør om TodosWidget til å være en server komponent
 
-Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](#oppsett) av applikasjonen.
+Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](./README.md#oppsett) av applikasjonen.
 
 ```
 git checkout task-2
