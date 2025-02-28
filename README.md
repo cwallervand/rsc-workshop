@@ -42,7 +42,7 @@ git checkout task-1
 ```
 
 I denne oppgaven skal du utforske litt hvordan klient- og server-komponenter blir rendret og hvordan komposisjon kan gjøres.
-Ha i bakhodet at applikasjonen er rendret på server på page request, også komponentene som er marker med `use client`.
+Ha i bakhodet at applikasjonen er rendret på server på page request, det gjelder også komponentene som er marker med `use client`.
 
 Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000).
 
