@@ -1,4 +1,4 @@
-### Oppgave 1: Hello Server Component!
+# Oppgave 1: Hello Server Component!
 
 ```
 git checkout task-1
