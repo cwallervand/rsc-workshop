@@ -18,7 +18,7 @@ Denne workshopen passer best for deg som har erfaring med React.
 
 ## Oppsett
 
-Hvis du har Docker så kan du initialisere applikasjonen i en dev container. Alternativt så kan du initialisere applikasjonen manuelt.
+Du kan initialisere applikasjonen [manuelt](#manuelt) eller, hvis du har [Docker](https://www.docker.com/), så kan applikasjonen initialiseres [med dev container](#med-dev-container-docker).
 
 ### Manuelt
 
@@ -67,13 +67,13 @@ git checkout task-2
 ```
 
 Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient relaterte ting i komponenten skal bort.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient-relaterte ting i komponenten skal bort.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
 - [_Server Functions_](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
 - Direktivet [`use server`](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
-- [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server komponenter kan være asynkrone_
+- [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server-komponenter kan være asynkrone_
 
 Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
 Disse gjøremålene skal du hente ut fra databasen og vise i Tudlu-appen.
@@ -98,14 +98,12 @@ const todos: Todo[] = await db.todo.findMany();
 git checkout task-3
 ```
 
-I denne oppgaven så skal det implementeres funksjonalitet for å opprette et nytt gjøremål.
+I denne oppgaven så skal det implementeres funksjonalitet for å opprette et nytt gjøremål. Et gjøremål har en tittel og en valgfri beskrivelse.
 
 Her er noen krav for denne featuren:
 
-- Et gjøremål må ha en tittel
-- Et gjøremål kan ha en beskrivelse
 - Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
-- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren. TODO: Skriv mer info om dette
+- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren.
 - Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
 
 Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
@@ -118,7 +116,7 @@ Nye konsepter du trenger å vite om i denne oppgaven er:
 - [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) - Hook som gir informasjon om status på siste form submit
 
 <details>
-  <summary>Hint 1: Hvordan bruke FormData</summary>
+  <summary>Hint 1: Hvordan bruke FormData i server-funksjonen</summary>
   <p>
     <pre>
       <code>
@@ -183,7 +181,7 @@ Her er noen krav for denne featuren:
 - UI-et skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UI-et vise den faktiske statusen på gjøremålet.
 
-Det er allerede blitt laget en komponent [toggleTodoStatus](./src/components/todoItem/toggleTodoStatus.tsx) som du kan bygge videre på hvis du ønsker et utgangspunkt.
+Det er allerede blitt laget en komponent [ToggleTodoStatus](./src/components/todoItem/toggleTodoStatus.tsx) som du kan bygge videre på hvis du ønsker et utgangspunkt. Denne komponeten er i bruk i [TodoItem](./src/components/todoItem/todoItem.tsx).
 Ellers er komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) også tilgjengelig.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
