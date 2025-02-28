@@ -29,6 +29,14 @@ Du kan initialisere applikasjonen [manuelt](#manuelt) eller, hvis du har [Docker
 
 ### Med dev container (Docker)
 
+_PS! Når du bruker dev containers er det enklest å kjøre kommandoer fra VSCode sin terminal fremfor terminal, iTerm, Hyper osv._
+
+1. Installer og kjør [Docker](https://www.docker.com/products/docker-desktop/)
+2. Installer [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+3. Åpne prosjektet i Dev Container (kommer en liten popup i VSCode)
+4. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
+5. [Åpne applikasjonen](http://localhost:3000)
+
 ## Oppgaver
 
 Det er lagt opp til at du starter med blanke ark i en ny branch for hver oppgave. I hver branch så kommer du til å ha det du trenger av funksjonalitet og komponenter for å løse oppgaven. Hvis du heller vil bruke dine egne komponenter og kode gjennom hele workshopen så må du gjerne gjøre det.
