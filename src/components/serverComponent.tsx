@@ -1,4 +1,4 @@
-import { getComponentTypeClass } from "~/components/utils/componentTypeUtils";
+import { componentTypeClass } from "~/components/utils/componentTypeUtils";
 
 type ServerComponentProps = {
   message?: string;
@@ -10,7 +10,7 @@ export const ServerComponent = (
 ) => {
   console.log(`### ServerComponent: ${message} ###`);
   return (
-    <div className={getComponentTypeClass}>
+    <div className={componentTypeClass}>
       <p>{message}</p >
       {children}
     </div >
