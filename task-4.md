@@ -14,7 +14,7 @@ I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i
 
 Her er noen krav for denne featuren:
 
-- Skjemaet for å registrere en nt nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
+- Skjemaet for å registrere et nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
 - Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [TodoListSkeleton](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
