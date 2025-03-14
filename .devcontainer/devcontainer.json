@@ -1,5 +1,12 @@
 {
   "name": "Node.js & TypeScript",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-  "postCreateCommand": "npm i && npm run db:generate"
+  "postCreateCommand": "npm i && npm run db:generate",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode"
+      ]
+    }
+  }
 }
