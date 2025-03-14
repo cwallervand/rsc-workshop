@@ -16,7 +16,7 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
 
   const [optimisticTodoStatus, toggleOptimisticTodoStatus] = useOptimistic(
     todo.done,
-    (currentTodoStatus: boolean, optimisitcDoneStatus: boolean) => (optimisitcDoneStatus),
+    (currentTodoStatus: boolean, newTodoStatus: boolean) => (newTodoStatus),
   );
 
   const handleToggleTodoStatus = () => {
