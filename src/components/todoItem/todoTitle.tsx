@@ -15,12 +15,9 @@ type TodoTitleProps = {
 };
 
 export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
-  const [optimisticTodo, updateOptimisticTodoTitle] = useOptimistic(
-    todo,
-    (currentTodo: Todo, optimisitcTodoTitle: string) => ({
-      ...currentTodo,
-      title: optimisitcTodoTitle,
-    }),
+  const [optimisticTodoTitle, updateOptimisticTodoTitle] = useOptimistic(
+    todo.title,
+    (currentTodoTitle: string, newTitle: string) => (newTitle)
   );
 
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
@@ -52,7 +49,7 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
             id={editTitleInputId}
             type="text"
             name="title"
-            defaultValue={optimisticTodo.title}
+            defaultValue={optimisticTodoTitle}
             autoFocus
           />
           <Button
@@ -65,7 +62,7 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
           </Button>
         </form>
       ) : (
-        <CardTitle>{optimisticTodo.title}</CardTitle>
+        <CardTitle>{optimisticTodoTitle}</CardTitle>
       )}
       {!isEditTitleMode && (
         <Button
