@@ -14,19 +14,17 @@ type ToggleTodoStatusProps = {
 
 export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
 
-  const [optimisticTodo, toggleOptimisticTodoStatus] = useOptimistic(
-    todo,
-    (currentTodo: Todo, optimisitcDoneStatus: boolean) => ({
-      ...currentTodo,
-      done: optimisitcDoneStatus,
-    }),
+  const [optimisticTodoStatus, toggleOptimisticTodoStatus] = useOptimistic(
+    todo.done,
+    (currentTodoStatus: boolean, optimisitcDoneStatus: boolean) => (optimisitcDoneStatus),
   );
 
   const handleToggleTodoStatus = () => {
     startTransition(async () => {
       try {
-        toggleOptimisticTodoStatus(!optimisticTodo.done);
-        await setTodoDoneStatus(todo.id, !optimisticTodo.done);
+        const newTodoStatus = !optimisticTodoStatus;
+        toggleOptimisticTodoStatus(newTodoStatus);
+        await setTodoDoneStatus(todo.id, newTodoStatus);
       } catch {
         toggleOptimisticTodoStatus(todo.done)
       }
@@ -41,7 +39,7 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
       className="border-0 [&_svg]:size-8"
       onClick={handleToggleTodoStatus}
     >
-      <CheckBadge done={optimisticTodo.done} />
+      <CheckBadge done={optimisticTodoStatus} />
     </Button>
   );
 };
