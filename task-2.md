@@ -21,6 +21,11 @@ Til å gjøre CRUD-operasjoner mot databasen så har vi satt opp [Prisma ORM (v5
 
 Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
 
+Her er noen krav for denne featuren:
+
+- Alt av klient-relaterte ting er borte fra [TodosWidget](./src/components/todoList/todosWidget.tsx)
+- Todos skal hentes fra databasen
+
 Gjøremål kan hentes fra databasen slik:
 
 ```ts
