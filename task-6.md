@@ -16,10 +16,14 @@ Her er noen krav for denne featuren:
 Komponenten [`<Pencil />`](./src/components/icons/pencil.tsx) kan for eksempel brukes til å toggle mellom visningsmodus og redigeringsmodus.
 
 <details>
-  <summary>Hint 1: <q>An optimistic state update occurred outside a transition or action</q></summary>
+  <summary>Hint 1: Ny komponent</summary>
+  <p>Det vil sikkert være ryddig å ha funksjonaliteten for tittelen i en egen komponent ;)</p>
+</details>
+<details>
+  <summary>Hint 2: <q>An optimistic state update occurred outside a transition or action</q></summary>
   <p>Bruk <code><a href="https://react.dev/reference/react/startTransition">startTransition</a></code></p>
 </details>
 <details>
-  <summary>Hint 2: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
-  Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>useTransition</code>.
+  <summary>Hint 3: "Hjelp! UI-et oppdateres ikke med en gang!"</summary>
+  Metoden som oppdaterer modusen for tittelen skal ikke være inne i <code>startTransition</code>.
 </details>
