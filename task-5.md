@@ -8,7 +8,6 @@ I denne oppgaven skal du legge til en feature for å vise og endre statusen på 
 
 Her er noen krav for denne featuren:
 
-- Hvert gjøremål i listen skal vise en indikasjon på status
 - Man skal lett kunne endre statusen på et gjøremål
 - UI-et skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UI-et vise den faktiske statusen på gjøremålet.
