@@ -12,7 +12,7 @@ Her er noen krav for denne featuren:
 - UI-et skal oppdateres med en gang man har endret status (selv om man ikke har fått svar fra server) til å reflektere den nye statusen. Til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UI-et vise den faktiske statusen på gjøremålet.
 
-Det er allerede blitt laget en komponent [ToggleTodoStatus](./src/components/todoItem/toggleTodoStatus.tsx) som du kan bygge videre på hvis du ønsker et utgangspunkt. Denne komponeten er i bruk i [TodoItem](./src/components/todoItem/todoItem.tsx).
+Det er allerede blitt laget en komponent [`<ToggleTodoStatus />`](./src/components/todoItem/toggleTodoStatus.tsx) som du kan bygge videre på hvis du ønsker et utgangspunkt. Denne komponeten er i bruk i [`<TodoItem />`](./src/components/todoItem/todoItem.tsx).
 Ellers er komponenten [`<CheckBadge />`](./src/components/icons/check-badge.tsx) også tilgjengelig.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
