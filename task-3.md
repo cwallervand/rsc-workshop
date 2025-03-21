@@ -8,7 +8,7 @@ I denne oppgaven så skal det implementeres funksjonalitet for å opprette et ny
 
 Her er noen krav for denne featuren:
 
-- Komponenten [`AddTodoForm`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
+- Komponenten [`<AddTodoForm />`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
 - [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren.
 - Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
 
