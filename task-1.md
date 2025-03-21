@@ -10,7 +10,7 @@ Ha i bakhodet at applikasjonen er rendret på server på page request, det gjeld
 Start applikasjonen med `npm run dev` og [åpne den i nettleseren](http://localhost:3000).
 
 Åpne filen [src/app/page.tsx](./src/app/page.tsx) og utforsk hvordan de forskjellige komponentene oppfører seg.
-Akkurat nå er det kun komponentene [ServerComponent](./src/components/serverComponent.tsx) og [ClientComponent](./src/components/clientComponent.tsx) som er i bruk.
+Akkurat nå er det kun komponentene [`<ServerComponent />`](./src/components/serverComponent.tsx) og [`<ClientComponent />`](./src/components/clientComponent.tsx) som er i bruk.
 
 - Hvor kjøres / rendres komponenten? Se i loggene på server og på klient.
 - Er den med innkludert i JS-bundle på klienten?

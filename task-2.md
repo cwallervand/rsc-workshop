@@ -7,7 +7,7 @@ git checkout task-2
 ```
 
 Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [TodosWidget](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient-relaterte ting i komponenten skal bort.
+Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [`<TodosWidget />`](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient-relaterte ting i komponenten skal bort.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
