@@ -1,8 +1,7 @@
-import { type FC } from "react";
 import { type Todo } from "@prisma/client";
-
-import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
+import { type FC } from "react";
 import { ToggleTodoStatus } from "~/components/todoItem/toggleTodoStatus";
+import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card";
 
 
 type TodoItemProps = {
@@ -18,7 +17,7 @@ export const TodoItem: FC<TodoItemProps> = ({ todo }) => {
         </div>
         <CardDescription>{todo.description}</CardDescription>
       </CardHeader>
-      <div className="flex flex-col items-center px-4">
+      <div className="flex flex-col justify-center px-4">
         <ToggleTodoStatus todo={todo} />
       </div>
     </Card>
