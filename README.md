@@ -45,29 +45,25 @@ Hvis du i løpet av workshopen står fast eller bare er nysgjerrig på hvordan v
 
 Detaljer om hver oppgave finner du i en egen README-fil i hver enkelt branch. Dette er oppgavene vi har lagt opp:
 
-- Oppgave 1: Hello Server Component!
+- Oppgave 1: Gjør om TodosWidget til å være en server komponent
 
   `git checkout task-1`
 
-- Oppgave 2: Gjør om TodosWidget til å være en server komponent
+- Oppgave 2: Opprette et nytt gjøremål
 
   `git checkout task-2`
 
-- Oppgave 3: Opprette et nytt gjøremål
+- Oppgave 3: Bedre UX med Suspense
 
   `git checkout task-3`
 
-- Oppgave 4: Bedre UX med Suspense
+- Oppgave 4: Endre status på et gjøremål + optimistisk UI
 
   `git checkout task-4`
 
-- Oppgave 5: Endre status på et gjøremål + optimistisk UI
+- Oppgave 5: Endre tittel på et gjøremål + optimistisk UI
 
   `git checkout task-5`
-
-- Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
-
-  `git checkout task-6`
 
 ## Tech stack
 

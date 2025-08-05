@@ -1,46 +1,22 @@
-# Oppgave 3: Opprette et nytt gjøremål
+# Oppgave 3: Bedre UX med Suspense
 
 ```
 git checkout task-3
 ```
 
-I denne oppgaven så skal det implementeres funksjonalitet for å opprette et nytt gjøremål. Et gjøremål har en tittel og en valgfri beskrivelse.
+På grunn av ondsinnede skapninger i back-end så tar det ufattelig lang tid å hente listen med gjøremål fra serveren.
+Dette kan vi dessverre ikke gjøre noe med så da må vi bare jobbe med det vi har.
+Per nå så får vi ingenting tilbake fra serveren før alle gjøremål er ferdig behandlet (som i rendret på server). Vi er utolmodige mennesker og vil ha visuell feedback med en gang!
+
+I React så finnes det en komponent som heter [`<Suspense />`](https://react.dev/reference/react/Suspense). Denne lar deg vise en fallback mens man venter på at det som skal rendres inne i Suspense er klart for å vises.
+
+I denne oppgaven skal du bruke Suspense til å forbedre den opplevde tregheten i Tudlu.
 
 Her er noen krav for denne featuren:
 
-- Komponenten [`<AddTodoForm />`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
-- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren.
-- Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
-
-Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
-
-Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk hvis du ønsker å bruke de.
+- Skjemaet for å registrere et nytt gjøremål skal vises selv om man venter på svar for å hente alle gjøremålene.
+- Mens man venter på å få gjøremålene fra serveren så skal det vises en liste med gjøremål-skjelett. Det finnes allerede en komponent [`<TodoListSkeleton />`](./src/components/todoList/todoListSkeleton.tsx) som du kan bruke.
 
 Nye konsepter du trenger å vite om i denne oppgaven er:
 
-- [_Server Functions_ sammen med _Form Actions_](https://react.dev/reference/rsc/server-functions#using-server-functions-with-form-actions)
-- [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) - Hook som gir informasjon om status på siste form submit
-
-<details>
-  <summary>Hint 1: Hvordan bruke FormData i server-funksjonen</summary>
-  <p>
-    <pre>
-      <code>
-      function addTodo(formData: FormData) {
-        const todo = {
-          title: formData.get("title") as string,
-          description: formData.get("description") as string | null,
-        };
-      }
-      </code>
-    </pre>
-  </p>
-</details>
-<details>
-  <summary>Hint 2: <code>revalidatePath</code></summary>
-  <p>
-    <pre>
-      <code>revalidatePath("/");</code>
-    </pre>
-  </p>
-</details>
+- [`<Suspense />`](https://react.dev/reference/react/Suspense) - _Lar deg rendre en fallback inntil alle barn er ferdig lastet_
