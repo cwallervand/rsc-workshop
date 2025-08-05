@@ -8,10 +8,9 @@ export async function getTodos(): Promise<Todo[]> {
   return Promise.resolve([
     {
       id: 1,
-      title: "Oppgave 1: Hello Server Component!",
-      description:
-        "Utforsk hvordan ClientComponent og ServerComponent komponentene blir rendret. Utforsk de forskjellige komposisjonsmønsterene. Hva skjer på server og hva skjer på klienten? ",
-      done: true,
+      title: "Oppgave 1: Gjør om TodosWidget til å være en server komponent",
+      description: "",
+      done: false,
       createdAt: new Date(),
     },
   ]);
