@@ -1,36 +1,46 @@
-# Oppgave 2: Gjør om TodosWidget til å være en server komponent
-
-Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](./README.md#oppsett) av applikasjonen.
+# Oppgave 2: Opprette et nytt gjøremål
 
 ```
 git checkout task-2
 ```
 
-Fra og med denne oppgaven så skal gjøremålsapplikasjonen Tudlu videreutvikles. Noe funksjonalitet er allerede på plass, men akkurat nå så er dette en ganske ubrukelig gjøremålsapplikasjon da den bare lister ut noen gjøremål (Tudluer) uten at man kan gjøre noe med de.
-Dette skal vi fikse etter hvert, men akkurat nå skal du fokusere på å gjøre om komponenten [`<TodosWidget />`](./src/components/todoList/todosWidget.tsx) til å bli en server komponent; alt av klient-relaterte ting i komponenten skal bort.
-
-Nye konsepter du trenger å vite om i denne oppgaven er:
-
-- [_Server Functions_](https://react.dev/reference/rsc/server-functions) - _Server funksjoner gjør det mulig for (klient)komponenter å kalle på asynkrone funksjoner som utføres på serveren_
-- Direktivet [`use server`](https://react.dev/reference/rsc/use-server) - _Brukes for å markere at server-side funksjonalitet kan kalles fra klienten_
-- [Asynkrone komponenter med Server Components](https://react.dev/reference/rsc/server-components#async-components-with-server-components) - _Server-komponenter kan være asynkrone_
-
-Det er satt opp en database ([SQLite](https://www.sqlite.org/)) som er populert med noen gjøremål (`Todo`).
-Disse gjøremålene skal du hente ut fra databasen og vise i Tudlu-appen.
-Til å gjøre CRUD-operasjoner mot databasen så har vi satt opp [Prisma ORM (v5)](https://www.prisma.io/docs/orm). Det er modellen `Todo` man bruker mot databasen. Definisjonen av en `Todo` finner du i [schema.prisma](./prisma/schema.prisma).
-
-Funksjoner som utfører CRUD-operasjoner (disse vil være _Server Functions_) skal ligge i filen [serverFunctions](./src/server/serverFunctions.ts).
+I denne oppgaven så skal det implementeres funksjonalitet for å opprette et nytt gjøremål. Et gjøremål har en tittel og en valgfri beskrivelse.
 
 Her er noen krav for denne featuren:
 
-- Alt av klient-relaterte ting er borte fra [TodosWidget](./src/components/todoList/todosWidget.tsx)
-- Todos skal hentes fra databasen
+- Komponenten [`<AddTodoForm />`](./src/components/addTodoForm.tsx) skal brukes for å sende form-data til serveren.
+- [`FormData`](https://developer.mozilla.org/en-US/docs/Web/API/FormData) skal brukes for å ta i mot dataene som blir sendt til serveren.
+- Mens det skrives til databasen så skal lagre-knappen disables. Dette kan man gjøre med den nye hooken [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus).
 
-Gjøremål kan hentes fra databasen slik:
+Når et nytt gjøremål er lagret så må man få oppdatert UIet. Med NextJS så kan man f.eks bruke [`revalidatePath`](https://nextjs.org/docs/app/api-reference/functions/revalidatePath).
 
-```ts
-import { db } from "~/server/db";
-import { type Todo } from "@prisma/client";
+Komponentene [Input](./src/components/ui/input.tsx) og [Textarea](./src/components/ui/textarea.tsx) ligger klar til bruk hvis du ønsker å bruke de.
 
-const todos: Todo[] = await db.todo.findMany();
-```
+Nye konsepter du trenger å vite om i denne oppgaven er:
+
+- [_Server Functions_ sammen med _Form Actions_](https://react.dev/reference/rsc/server-functions#using-server-functions-with-form-actions)
+- [`useFormStatus`](https://react.dev/reference/react-dom/hooks/useFormStatus) - Hook som gir informasjon om status på siste form submit
+
+<details>
+  <summary>Hint 1: Hvordan bruke FormData i server-funksjonen</summary>
+  <p>
+    <pre>
+      <code>
+      function addTodo(formData: FormData) {
+        const todo = {
+          title: formData.get("title") as string,
+          description: formData.get("description") as string | null,
+        };
+      }
+      </code>
+    </pre>
+  </p>
+</details>
+<details>
+  <summary>Hint 2: <code>revalidatePath</code></summary>
+  <p>
+    <pre>
+      <code>revalidatePath("/");</code>
+    </pre>
+  </p>
+</details>
