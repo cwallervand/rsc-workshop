@@ -1,7 +1,7 @@
-# Oppgave 6: Endre tittel på et gjøremål + optimistisk UI
+# Oppgave 5: Endre tittel på et gjøremål + optimistisk UI
 
 ```
-git checkout task-6
+git checkout task-5
 ```
 
 I denne oppgaven skal du legge til en feature for å endre tittelen på et gjøremål.
