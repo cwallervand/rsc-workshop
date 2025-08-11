@@ -29,7 +29,7 @@ export async function getTodos(): Promise<Todo[]> {
   return todos;
 }
 
-export async function setTodoDoneStatus(id: number, done: boolean) {
+export async function updateTodoStatus(id: number, done: boolean) {
   await delay(DELAY_CAUSED_BY_SOME_EVIL);
   await db.todo.update({
     where: {
