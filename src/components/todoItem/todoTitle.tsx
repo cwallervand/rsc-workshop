@@ -15,30 +15,30 @@ type TodoTitleProps = {
 };
 
 export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
-  const [optimisticTodoTitle, updateOptimisticTodoTitle] = useOptimistic(
+  const [optimisticTodoTitle, setOptimisticTodoTitle] = useOptimistic(
     todo.title,
     (currentTodoTitle: string, newTitle: string) => (newTitle)
   );
 
   const [isEditTitleMode, setIsEditTitleMode] = useState(false);
-  const editTitleInputId = `editTitleInput-${todo.id}`;
 
-  const handleUpdateTodoTitle = () => {
-    const inputElement = document.getElementById(
-      editTitleInputId,
-    ) as HTMLInputElement;
+  const handleUpdateTodoTitle = async (ev: React.FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(ev.currentTarget);
+    const newTodoTitle = formData.get("title") as string;
 
-    const newTitle = inputElement.value;
     setIsEditTitleMode(false);
 
-    startTransition(async () => {
-      try {
-        updateOptimisticTodoTitle(newTitle);
-        await updateTodoTitle(todo.id, newTitle);
-      } catch {
-        updateOptimisticTodoTitle(todo.title);
-      }
+    startTransition(() => {
+      setOptimisticTodoTitle(newTodoTitle);
     });
+
+    try {
+      await updateTodoTitle(todo.id, newTodoTitle);
+    } catch {
+      startTransition(() => {
+        setOptimisticTodoTitle(todo.title);
+      });
+    }
   };
 
   return (
@@ -46,7 +46,6 @@ export const TodoTitle: FC<TodoTitleProps> = ({ todo }) => {
       {isEditTitleMode ? (
         <form onSubmit={handleUpdateTodoTitle} className="flex gap-2">
           <Input
-            id={editTitleInputId}
             type="text"
             name="title"
             defaultValue={optimisticTodoTitle}
