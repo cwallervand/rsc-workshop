@@ -26,8 +26,6 @@ export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
     }
   };
 
-  console.log("ToggleTodoStatus", optimisticTodoStatus
-  );
   return (
     <form action={updateTodoStatusAction}>
       <input type="hidden" name="done" value={optimisticTodoStatus ? "true" : "false"} />
