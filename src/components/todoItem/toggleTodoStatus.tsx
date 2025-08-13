@@ -13,8 +13,6 @@ type ToggleTodoStatusProps = {
 };
 
 export const ToggleTodoStatus: FC<ToggleTodoStatusProps> = ({ todo }) => {
-
-
   const [optimisticTodoStatus, setOptimisticTodoStatus] = useOptimistic(
     todo.done,
     (currentTodoStatus: boolean, newTodoStatus: boolean) => (newTodoStatus),
