@@ -10,7 +10,7 @@ Her er noen krav for denne featuren:
 
 - Bruk `onSubmit` for å oppdatere UI og lagre ny tittel i databasen.
 - Det skal være to moduser for tittelen på et gjøremål: visningsmodus og redigeringsmodus.
-- UI-et skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette kan man bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
+- UI-et skal oppdateres med en gang man har endret tittelen (selv om man ikke har fått svar fra server): man skal med en gang gå til visningsmodus og den nye tittelen skal vises. For å få til dette må man blant annet bruke [useOptimistic](https://react.dev/reference/react/useOptimistic).
 - Ved oppdateringsfeil skal UI-et vise den faktiske tittelen på gjøremålet.
 
 Komponenten [`<Pencil />`](./src/components/icons/pencil.tsx) kan for eksempel brukes til å toggle mellom visningsmodus og redigeringsmodus.
