@@ -1,6 +1,7 @@
 # Oppgave 1: Gjør om TodosWidget til å være en server komponent
 
-Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](./README.md#oppsett) av applikasjonen.
+**Hvis du ikke allerede har gjort det så må du gå gjennom [Oppsett](./README.md#oppsett) av applikasjonen.
+Hvis alt ble korrekt gjort så har du installert pakker og satt opp database i _main_ branch.**
 
 ```
 git checkout task-1
