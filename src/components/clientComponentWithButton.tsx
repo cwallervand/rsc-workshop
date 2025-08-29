@@ -14,7 +14,7 @@ export const ClientComponentWithButton = () => {
           Show ServerComponent!
         </button>
       </div>
-      {renderServerComponent && <ServerComponent message="ServertComponent rendered by button click!" />}
+      {renderServerComponent && <ServerComponent message="ServerComponent rendered by button click!" />}
     </ClientComponent>
   );
 };
