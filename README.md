@@ -35,9 +35,10 @@ _PS! Når du bruker dev containers er det enklest å kjøre kommandoer fra VSCod
 
 1. Installer og kjør [Docker](https://www.docker.com/products/docker-desktop/)
 2. Installer [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-3. Åpne prosjektet i Dev Container (kommer en liten popup i VSCode)
-4. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
-5. [Åpne applikasjonen](http://localhost:3000)
+3. Åpne prosjektet i Dev Container (kommer en liten popup i VSCode) - _Dette vil installere nødvendige pakker samt sette opp databasen og populerer den med data. Ved spørsmål om navn på migreringen kan du bare trykke enter_
+4. `git checkout task-1` - `task-1` er startpunktet for workshopen
+5. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
+6. [Åpne applikasjonen](http://localhost:3000)
 
 ## Oppgaver
 
