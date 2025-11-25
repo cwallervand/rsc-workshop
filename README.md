@@ -23,7 +23,7 @@ Du kan initialisere applikasjonen [manuelt](#manuelt) eller, hvis du har [Docker
 ### Manuelt
 
 1. `git checkout main` - Vær i main branch når prosjektet settes opp
-1. `npm i` - _Installerer nødvendige pakker_
+1. `npm ci` - _Installerer nødvendige pakker_
 1. `npm run db:generate` - _Setter opp databasen og populerer den med data. Ved spørsmål om navn på migreringen kan du bare trykke enter_
 1. `git checkout task-1` - `task-1` er startpunktet for workshopen
 1. `npm run dev` - _Dette gjøres i hver branch for å starte applikasjonen_
